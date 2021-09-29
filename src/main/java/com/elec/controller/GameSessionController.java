@@ -1,6 +1,7 @@
 package com.elec.controller;
 
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -16,5 +17,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequestMapping("/game-session")
 public class GameSessionController {
-
+    @RequestMapping("/test0shuyuan")
+    public String test0shuyuan(Model model){
+        model.addAttribute("name","zhangsan");
+        return "test";
+    }
 }

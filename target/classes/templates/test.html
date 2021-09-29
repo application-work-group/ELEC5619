@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p> {{message}}</p>
+</div>
+<div th:text="${name}"></div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            message:"Hello Vue.js",
+        }
+    })
+</script>
+
+</body>
+</html>

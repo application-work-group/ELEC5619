@@ -3,13 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/game.css">
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
 </head>
 <body>
+<div id="container">
+    <div id="topbar">
+        <div id="topbarNav">
+            <div class="topbarNav-left">
+                <ul class="quickNav">
+                    <li class="homepage">
+                        <a href="http://localhost:8080/game-session/test1shuyuan">homepage</a>
+                    </li>
+                    <li class="line">|</li>
+                    <li class="empty"></li>
+                    <li class="line">|</li>
+                    <li class="empty"></li>
+                </ul>
+            </div>
+            <div class="topbarNav-right">
+                welcome
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="website-name">
+            <a href="../game-session/test1shuyuan">
+                <img src="../static/images/sport.jpg" alt="Home" width="60px" height="50px">
+            </a>
+
+        </div>
+        <div class="mainNav">
+            <div class="nav">
+                <div class="nav-ul">
+                    <ul class="nav-item">
+                        <li>mainpage</li>
+                        <li>|</li>
+                        <li>basketball</li>
+                        <li>|</li>
+                        <li>football</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="subnav">
+                <div class="subnav-ul">
+                    <ul class="nav-item">
+                        <li>1</li>
+                        <li>|</li>
+                        <li>2</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
 <div id="app">
     <p> {{message}}</p>
 </div>
+</div>
 <div th:text="${name}"></div>
+
+<div id="footer"></div>
+</div>
 <script>
     new Vue({
         el:'#app',

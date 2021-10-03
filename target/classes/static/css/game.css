@@ -58,7 +58,7 @@ ul{
     background_color: #fafbfc;
 }
 #topbarNav,.header,.game_live{
-    width:80%;
+    width:980px;
     margin-left:auto;
     margin-right:auto;
 }
@@ -74,10 +74,14 @@ ul{
     height: 140px;
 }
 .game_live{
-    width:80%;
+    height:1000px;
 }
 .game_live_content{
-    width:100%;
+    width:70%;
+    height:70%;
+    border: 1px #f7f7f7 solid;
+    background-color: #fdfdfd;
+    float:left;
 }
 .table_list .table_list_c{
     width:70%;
@@ -130,6 +134,22 @@ ul{
     height:20px;
 }
 
+.team_vs{
+    width:100%;
+    float:left;
+    padding:10px 0px;
+    border-bottom: 1px #f3f3f3 solid;
+}
+.team_vs_box{
+    float:left;
+    width:100%;
+}
+.game_box{
+    background-color: #fdfdfd;
+    border:1px #f7f7f7 solid;
+    float: left;
+    width:100%;
+}
 .table_list_c .table ul li p{
     text-align: center;
     height: 20px;
@@ -139,9 +159,13 @@ ul{
 
 .team_b{
     float:right;
+    height:100px;
+    margin-right:20px;
 }
 .team_a{
     float:left;
+    height:100px;
+    margin-left:20px;
 }
 div{
     display: block;
@@ -153,4 +177,8 @@ body{
 
 a{
     text-decoration: none;
+}
+
+.container{
+    float:left;
 }

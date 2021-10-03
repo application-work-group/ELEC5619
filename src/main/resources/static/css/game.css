@@ -53,8 +53,11 @@ ul{
     height:80px;
     margin-top:12px;
 }
-
-#topbarNav,.header{
+.table_list .table_list .table ul{
+    position: absolute;
+    background_color: #fafbfc;
+}
+#topbarNav,.header,.game_live{
     width:80%;
     margin-left:auto;
     margin-right:auto;
@@ -66,11 +69,88 @@ ul{
 .topbarNav-right{
     float:right;
 }
+.table_list{
+    width:100%;
+    height: 140px;
+}
+.game_live{
+    width:80%;
+}
+.game_live_content{
+    width:100%;
+}
+.table_list .table_list_c{
+    width:70%;
+    float:left;
+    height:100px;
+    margin-left:20px;
+    border:1px #f7f7f7 solid;
+    background-color: #fafbfd;
+    padding: 10px;
+}
 
+.table_list .table{
+    overflow:hidden;
+    border: 1px #f3f3f3 solid;
+    border-bottom: 0;
+    position: relative;
+    height: 100px;
+    background-color: #fff;
+}
+
+.table_list_c .table ul li{
+    float: left;
+    width: 13%;
+    border-right: 1px #f3f3f3 solid;
+    border-bottom: 1px #f3f3f3 solid;
+    height:99px;
+}
+.table_list_left{
+    background-image: url(/static/images/left_icon.png);
+    background-repeat: no-repeat;
+    width: 47px;
+    height: 47px;
+    margin-top: 22px;
+    cursor: pointer;
+    float: left;
+}
+.table_list_right{
+    background-image: url(/static/images/right_icon.png);
+    background-repeat: no-repeat;
+    width: 69px;
+    height: 69px;
+    margin-top: 22px;
+    cursor: pointer;
+    float: left;
+    margin-left: 20px;
+}
+.team, .team2{
+    margin-top:4px;
+    text-align: center;
+    height:20px;
+}
+
+.table_list_c .table ul li p{
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    border-bottom: 1px #f3f3f3 solid;
+}
+
+.team_b{
+    float:right;
+}
+.team_a{
+    float:left;
+}
 div{
     display: block;
 }
 
 body{
     font-size:12px;
+}
+
+a{
+    text-decoration: none;
 }

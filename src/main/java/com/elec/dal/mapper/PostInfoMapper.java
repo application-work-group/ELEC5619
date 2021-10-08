@@ -1,6 +1,6 @@
 package com.elec.dal.mapper;
 
-import com.elec.dal.pojo.GameSession;
+import com.elec.dal.pojo.PostInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Jinglin
  * @since 2021-10-08
  */
-public interface GameSessionMapper extends BaseMapper<GameSession> {
+public interface PostInfoMapper extends BaseMapper<PostInfo> {
 
 }

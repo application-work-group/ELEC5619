@@ -1,6 +1,6 @@
 package com.elec.dal.service;
 
-import com.elec.dal.pojo.GameSession;
+import com.elec.dal.pojo.PostInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author Jinglin
  * @since 2021-10-08
  */
-public interface IGameSessionService extends IService<GameSession> {
+public interface IPostInfoService extends IService<PostInfo> {
 
 }

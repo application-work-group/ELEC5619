@@ -1,4 +1,4 @@
-package com.elec.controller;
+package com.elec.controller.webController;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
  * @since 2021-10-08
  */
 @Controller
-@RequestMapping("/game-session")
-public class GameSessionController {
+@RequestMapping("/post-info")
+public class PostInfoController {
 
 }

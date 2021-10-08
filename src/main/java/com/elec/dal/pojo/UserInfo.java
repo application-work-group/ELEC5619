@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,11 +14,10 @@ import java.util.Date;
  * </p>
  *
  * @author Jinglin
- * @since 2021-09-08
+ * @since 2021-10-08
  */
 @Data
-@EqualsAndHashCode()
-@Accessors(chain = true)
+@EqualsAndHashCode(callSuper = false)
 public class UserInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,6 +38,16 @@ public class UserInfo implements Serializable {
      * current total scores
      */
     private Long currScores;
+
+    /**
+     * List of user post ids
+     */
+    private String postList;
+
+    /**
+     * watch list 
+     */
+    private String watchList;
 
     private Date gmtCreate;
 

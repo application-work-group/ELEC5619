@@ -18,7 +18,7 @@ import java.util.Date;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class User implements Serializable {
+public class PostInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,27 +31,27 @@ public class User implements Serializable {
     private String userName;
 
     /**
-     * user id 
+     * type of the post like basketball
      */
-    private Long userId;
+    private String gameType;
 
     /**
-     * phone
+     * title of the post
      */
-    private String phoneNumber;
+    private String title;
 
     /**
-     * email information
+     * content of the post
      */
-    private String email;
+    private String content;
 
     /**
-     * password coded by MD5
+     * comments of the post
      */
-    private String password;
+    private String comment;
 
     /**
-     * create time
+     * create time 
      */
     private Date gmtCreate;
 

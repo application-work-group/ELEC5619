@@ -55,12 +55,11 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/elec5619?useUnicode=ture&characterEncoding=UTF-8&serverTimezone=Asia"+"/Shanghai");
+        dsc.setUrl("jdbc:mysql://sh-cdb-ai0w8ioa.sql.tencentcdb.com:59560/test?useUnicode=ture&characterEncoding=UTF-8&serverTimezone=Asia"+"/Shanghai");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("root");
+        dsc.setPassword("wjl0000A");
         mpg.setDataSource(dsc);
-
         // 包配置
         final PackageConfig pc = new PackageConfig();
         pc.setParent("com.elec.dal.operationRecord")

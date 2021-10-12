@@ -18,9 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 @RequestMapping("/game-session")
 public class GameSessionController {
+
     @RequestMapping("/test0shuyuan")
     public String test0shuyuan(Model model){
+
         model.addAttribute("name","zhangsan");
+
+
         return "test";
     }
     @RequestMapping("/test1shuyuan")

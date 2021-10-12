@@ -171,7 +171,22 @@
                 </div>
             </div>
             <div class="data_box"></div>
-            <div class="predict_box"></div>
+            <div class="predict_box">
+                <div class="predict_title">
+                    <i class="predict_key">prediction</i>
+                    <div class="title_name">the winner is</div>
+                </div>
+                <div class="predict_list">
+                    <span class="team_a_button">
+                        <i>team1</i>
+                        <b>1.00</b>
+                    </span>
+                    <span class="team_b_button">
+                        <i>team2</i>
+                        <b>1.00</b>
+                    </span>
+                </div>
+            </div>
 
         </div>
         <div class="game_comment_box">
@@ -232,6 +247,30 @@
 <div th:text="${name}"></div>
 
 <div id="footer"></div>
+</div>
+<div class="predict_window" style="display:block">
+    <div class="window">
+        <div class="window_head">
+            <b>prediction
+            <i></i>
+            </b>
+            <span>the winner is:</span>
+            <i style="cursor:pointer" class="window_button_2">close</i>
+        </div>
+        <div class="window_body">
+            <div class="item1">
+                team1
+            </div>
+            <div class="item2">
+                1.0
+            </div>
+            <div class="item3">
+                <input type="text" value="5000" id="predict_number">
+                <i class="window_button_2">predict</i>
+                <p class="item3_win">you can win:</p>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
     new Vue({

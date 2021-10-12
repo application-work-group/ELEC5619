@@ -210,6 +210,109 @@ ul{
     margin-left:20px;
 }
 
+.predict_box{
+    width:100%;
+    height: auto;
+    padding:20px 10px 10px 10px;
+    float:left;
+    border-bottom:1px solid #f3f3f3;
+    background-color: white;
+}
+
+.predict_title{
+    width:100%;
+    height:35px;
+    text-align: -webkit-center;
+    font-size:16px;
+    color: #828282;
+    margin-bottom:5px;
+}
+.predict_list{
+    width:100%;
+    height:auto;
+    float: left;
+}
+
+.team_a_button,.team_b_button{
+    text-align: center;
+    float: left;
+    line-height: 100%;
+    font-size:14px;
+    margin-bottom:10px;
+    cursor: pointer;
+    height:100%;
+    margin-left:1%;
+    width:48%;
+    border: 2px solid;
+}
+
+.team_a_button i,.team_b_button i{
+    float:left;
+    width:100%;
+    font-size:16px;
+    text-align: center;
+    overflow:hidden;
+}
+.team_a_button b,.team_b_button b{
+    float:left;
+    width:100%;
+    font-size:18px;
+    line-height:20px;
+    text-align: center;
+
+}
+
+.predict_window{
+    width:100%;
+    height:220px;
+    bottom:0px;
+    background-color:black;
+    position:fixed;
+}
+
+.window{
+    width:560px;
+    margin:0 auto;
+    height:220px;
+    bottom:0px;
+    background-color:white;
+}
+.window_head{
+    width:100%;
+    height:50px;
+    line-height: 50px;
+    float:left;
+    background-color: #e6e4e4;
+    color: #FFF;
+    text-align: center;
+    font-size:16px;
+}
+
+.window_body{
+    width:300px;
+    height: auto;
+    background: #ffffff;
+    text-align: center;
+    margin:0 auto;
+}
+
+.window_body .item1{
+    max-width:200px;
+    height:50px;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #191919;
+    float:left;
+}
+
+.window_body .item2{
+    float: right;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #eeef09;
+}
 a{
     text-decoration: none;
 }

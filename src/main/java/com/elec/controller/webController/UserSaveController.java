@@ -33,8 +33,10 @@ public class UserSaveController {
      * @return
      */
     @PostMapping("/userLogin")
-    public Boolean userLogin(@RequestBody UserSaveDTO userSaveDTO){
-        return this.userSaveService.userLogin(userSaveDTO);
+    public JSONObject userLogin(@RequestBody UserSaveDTO userSaveDTO){
+        JSONObject object = new JSONObject();
+        object.fluentPut("result",this.userSaveService.userLogin(userSaveDTO));
+        return object;
     }
 
     /**

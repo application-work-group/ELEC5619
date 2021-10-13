@@ -5,6 +5,30 @@
         <span slot="label" ><i :class="item.icon"></i>{{item.label}}</span>
         <profile-post-content :content="item.content"/>  <!--最后一个关注的人格式不对，之后再改,用v-if可以，或者tabs数组只写前三个，最后一个单写-->
       </el-tab-pane>
+      <el-tab-pane name="5">   <!--这个是最后的个人信息，包括修改等，和前面的格式不同-->
+        <span slot="label" ><i class="el-icon-user"></i>personal Information</span>
+        <div class = "personalInfo">
+
+          <el-form ref="form" :model="form" label-width="80px" @submit.native.prevent>
+            <el-form-item label="Id">
+              <el-input v-model="form.Id" disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item label="Password">
+              <el-input v-model="form.password" disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item label="Email">
+              <el-input v-model="form.email" disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item label="Phone">
+              <el-input v-model="form.phone" disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="onSubmit">Change personal information</el-button>
+              <el-button  @click="onSubmit">Change personal information</el-button>
+            </el-form-item>
+          </el-form>
+        </div>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -20,6 +44,12 @@ export default {
     return {
       activeName: '1',
       test:"",
+      form: {
+        Id: '',
+        password: '',
+        email:'',
+        phone:''
+      },
       editableTabs:[{
         id : "1",
         label:'Post',
@@ -47,8 +77,8 @@ export default {
     handleClick(tab, event) {
       console.log(tab.name, event);
     },
-    created(){
-
+    onSubmit() {
+      console.log('submit!');
     }
   }
 }
@@ -64,6 +94,10 @@ export default {
   float: left;
 }
 
-
+.personalInfo {
+  width: 700px;
+  height: 500px;
+  margin-left: 30px;
+}
 
 </style>

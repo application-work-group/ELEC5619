@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "profile-top",
@@ -26,11 +26,12 @@ export default {
     }
   },
   created() {
-    axios.get('http://localhost:8080/elec/outTake/test').then((resp)=>{
-      this.userName = resp.data
-    }).catch((error)=>{
-      console.log(error);
-    })
+    //测试用
+    // axios.get('http://localhost:8080/elec/outTake/test').then((resp)=>{
+    //   this.userName = resp.data
+    // }).catch((error)=>{
+    //   console.log(error);
+    // })
   }
 }
 </script>

@@ -1,5 +1,6 @@
 package com.elec.controller.webController;
 
+import com.alibaba.fastjson.JSONObject;
 import com.elec.dal.pojo.UserInfo;
 import com.elec.dto.UserSaveDTO;
 import com.elec.service.UserSaveService;
@@ -20,9 +21,10 @@ public class UserSaveController {
      * @return
      */
     @PostMapping("/saveUserInfo")
-    public Boolean saveUserInfo(@RequestBody UserSaveDTO userSaveDTO){
-        this.userSaveService.saveUserInfo(userSaveDTO);
-        return true;
+    public JSONObject saveUserInfo(@RequestBody UserSaveDTO userSaveDTO){
+        JSONObject object = new JSONObject();
+        object.fluentPut("result",this.userSaveService.saveUserInfo(userSaveDTO));
+        return object;
     }
 
     /**

@@ -9,4 +9,5 @@ public interface GameSessionHandleService {
      * @return
      */
     GameSession getDetail(Long gameId);
+    boolean saveDetail();
 }

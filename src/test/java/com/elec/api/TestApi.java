@@ -1,5 +1,6 @@
 package com.elec.api;
 
+import com.alibaba.fastjson.JSONObject;
 import com.elec.controller.ApiTestController;
 import com.elec.devTest.BaseTest;
 import org.junit.Test;
@@ -34,4 +35,14 @@ public class TestApi extends BaseTest {
         headers.add("x-rapidapi-key","77bb1ccd20mshed85a95ffefdbebp187d43jsn4773d71cca23");
         HttpRequestA.getResult(headers,uri);
     }
+    @Test
+    public void testFootballApi(){
+        String uri = "https://odds.p.rapidapi.com/v1/odds?sport=soccer_epl&region=uk&mkt=h2h&dateFormat=iso&oddsFormat=decimal";
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("x-rapidapi-host","odds.p.rapidapi.com");
+        headers.add("x-rapidapi-key","77bb1ccd20mshed85a95ffefdbebp187d43jsn4773d71cca23");
+        HttpRequestA.getResult(headers,uri);
+        JSONObject object = new JSONObject();
+    }
+
 }

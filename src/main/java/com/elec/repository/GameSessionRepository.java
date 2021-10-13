@@ -1,6 +1,9 @@
 package com.elec.repository;
 
 import com.elec.dal.pojo.GameSession;
+import com.elec.dto.valueObj.GameDetail;
+
+import java.util.List;
 
 public interface GameSessionRepository {
     /**
@@ -9,4 +12,11 @@ public interface GameSessionRepository {
      * @return
      */
     GameSession getDetailById (Long gameId);
+
+    /**
+     * 保存比赛信息
+     * @param details
+     * @return
+     */
+    boolean saveFootballGameDetail(List<GameDetail> details);
 }

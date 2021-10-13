@@ -134,14 +134,16 @@ public class HttpRequestA {
     }
 
 
-    public static void getResult(HttpHeaders headers, String uri){
+    public static ResponseEntity<String> getResult(HttpHeaders headers, String uri){
         RestTemplate restTemplate = new RestTemplate();
 
         HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 
         ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
+        final String body = result.getBody();
 //        BasketballApiDTO basketballApiDTO = JSONObject.parseObject(result.getBody(), BasketballApiDTO.class);
-        System.out.println(result);
+//        System.out.println(result);
+        return result;
 //        System.out.println(JSONObject.toJSONString(basketballApiDTO));
     }
 

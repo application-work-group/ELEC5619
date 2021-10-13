@@ -1,11 +1,15 @@
 package com.elec.convertor;
 
+import com.alibaba.fastjson.JSONObject;
 import com.elec.component.GenerateId;
+import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.PostInfo;
 import com.elec.dal.pojo.User;
 import com.elec.dal.pojo.UserInfo;
 import com.elec.dto.PostSaveDTO;
 import com.elec.dto.UserSaveDTO;
+import com.elec.dto.valueObj.GameDetail;
+import com.elec.enums.GameTypeEnums;
 
 import java.util.Date;
 
@@ -42,5 +46,19 @@ public class UserConvertor {
         postInfo.setGmtCreate(new Date());
         postInfo.setGmtModified(new Date());
         return postInfo;
+    }
+    public static GameSession convert2GameSession(GameDetail gameDetail){
+        GameSession gameSession = new GameSession();
+        gameSession.setGameId(GenerateId.getGeneratID());
+        gameSession.setGameType(GameTypeEnums.FOOTBALL.name());
+        gameSession.setGameTime(gameDetail.getCommence_time());
+        gameSession.setGmtCreate(new Date());
+        gameSession.setGmtModified(new Date());
+        gameSession.setHome(gameDetail.getTeams().get(0));
+        gameSession.setAway(gameDetail.getTeams().get(1));
+        gameSession.setLeague(gameDetail.getSport_nice());
+        gameSession.setOddsInformation(JSONObject.toJSONString(gameDetail.getSites().get(0).getOdds().getH2h()));
+        gameSession.setGameResult("away:home");
+        return gameSession;
     }
 }

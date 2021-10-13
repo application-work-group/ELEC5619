@@ -44,4 +44,10 @@ public class UserSaveServiceImpl implements UserSaveService {
         UserInfo userInfo = userRepository.queryUserInfo(userName);
         return userInfo;
     }
+
+    @Override
+    public Boolean modifyPassword(String userName,String password) {
+        String newPassword = MD5Utils.stringToMD5(password);
+        return this.userRepository.modifyPassword(userName,newPassword);
+    }
 }

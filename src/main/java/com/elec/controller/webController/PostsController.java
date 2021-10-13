@@ -1,11 +1,10 @@
 package com.elec.controller.webController;
 
+import com.alibaba.fastjson.JSONObject;
 import com.elec.dto.PostSaveDTO;
 import com.elec.service.PostsSaveService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -16,14 +15,18 @@ public class PostsController {
     private PostsSaveService postsSaveService;
     //发帖帖子入库
     @PostMapping("/savePost")
-    public Boolean savePost(@RequestBody PostSaveDTO postSaveDTO){
-        this.postsSaveService.savePostInfo(postSaveDTO);
-        return true;
+    public JSONObject savePost(@RequestBody PostSaveDTO postSaveDTO){
+        JSONObject object = new JSONObject();
+        object.fluentPut("result",this.postsSaveService.savePostInfo(postSaveDTO));
+        return object;
     }
     //获取帖子详情
-    @PostMapping("/getPostDetail")
-    public Boolean getPostDetail(){
-        return true;
+    @GetMapping("/getPostDetail")
+    public JSONObject getPostDetail(@RequestParam(value = "postId") String postId){
+        JSONObject object = new JSONObject();
+        PostSaveDTO postSaveDTO= this.postsSaveService.queryPostInfoById(postId);
+        object.fluentPut("postDetail",postSaveDTO);
+        return object;
     }
     //更新帖子信息
     @PostMapping("/updatePostInfo")
@@ -32,7 +35,9 @@ public class PostsController {
     }
     //获取帖子列表
     @PostMapping("/getPostList")
-    public Boolean getPostList(){
-        return true;
+    public JSONObject getPostList(){
+        JSONObject object = new JSONObject();
+        object.fluentPut("postInfos",this.postsSaveService.getPostList());
+        return object;
     }
 }

@@ -61,4 +61,13 @@ public class UserRepositoryImpl implements UserRepository {
     public List<UserInfo> getUserInfos() {
         return userInfoService.list(new LambdaQueryWrapper<>());
     }
+
+    @Override
+    public boolean modifyPassword(String userName, String password) {
+        User user = iUserService.getOne(new LambdaQueryWrapper<User>()
+                .eq(User::getUserName,userName));
+        user.setPassword(password);
+        return this.iUserService.update(new LambdaQueryWrapper<User>()
+                .eq(User::getUserName, userName));
+    }
 }

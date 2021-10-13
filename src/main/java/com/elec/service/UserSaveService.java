@@ -24,4 +24,11 @@ public interface UserSaveService {
      * @return
      */
     UserInfo queryUserInfo(String userName);
+
+    /**
+     * 修改用户密码
+     * @param userName
+     * @return
+     */
+    Boolean modifyPassword(String userName,String password);
 }

@@ -28,4 +28,9 @@ public class PostSaveDTO {
      * comments of the post
      */
     private String comment;
+
+    /**
+     * Only id of the post
+     */
+    private String postId;
 }

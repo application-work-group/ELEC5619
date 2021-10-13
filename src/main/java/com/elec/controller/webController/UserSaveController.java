@@ -51,4 +51,16 @@ public class UserSaveController {
     /**
      * 获取关注用户列表
      */
+    /**
+     * 修改用户密码
+     * @param userName
+     * @return
+     */
+    @GetMapping("/modifyPassword")
+    public JSONObject modifyPassword(@RequestParam(value = "userName")String userName,
+                                     @RequestParam(value = "password")String password){
+        JSONObject object = new JSONObject();
+        object.fluentPut("result",this.userSaveService.modifyPassword(userName,password));
+        return object;
+    }
 }

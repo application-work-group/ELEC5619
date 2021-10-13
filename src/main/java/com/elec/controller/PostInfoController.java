@@ -1,4 +1,4 @@
-package com.elec.controller.webController;
+package com.elec.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;

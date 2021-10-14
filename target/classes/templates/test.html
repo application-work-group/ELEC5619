@@ -5,6 +5,8 @@
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="../static/css/game.css">
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/detail.js"></script>
 </head>
 <body>
 <div id="container">
@@ -181,13 +183,30 @@
                         <i>team1</i>
                         <b>1.00</b>
                     </span>
+
+                    <span class="team_b_button">
+                        <i>team2</i>
+                        <b>2.00</b>
+                    </span>
+                </div>
+            </div>
+            <div class="predict_box">
+                <div class="predict_title">
+                    <i class="predict_key">prediction</i>
+                    <div class="title_name">the loser is</div>
+                </div>
+                <div class="predict_list">
+                    <span class="team_a_button">
+                        <i>team1</i>
+                        <b>1.00</b>
+                    </span>
+
                     <span class="team_b_button">
                         <i>team2</i>
                         <b>1.00</b>
                     </span>
                 </div>
             </div>
-
         </div>
         <div class="game_comment_box">
             <div class="block">
@@ -240,44 +259,49 @@
             </div>
         </div>
     </div>
+    <div class="predict_window" style="display:none">
+        <div class="window">
+            <div class="window_head">
+                <b>prediction
+                    <i></i>
+                </b>
+                <span>title:</span>
+                <i style="cursor:pointer" class="window_button_1">close</i>
+            </div>
+            <div class="window_body">
+                <div class="item1">
+                    team1
+                </div>
+                <div class="item2">
+                    1.0
+                </div>
+                <div class="item3">
+                    <input type="number"  oninput="this.value = this.value.replace(/[^0-9]/g, '');" value="5000" id="predict_number">
+                    <i class="window_button_2">predict</i>
+                    <p class="item3_win">you can win: {{pe}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+</div>
+
 <div id="app">
     <p> {{message}}</p>
 </div>
 </div>
 <div th:text="${name}"></div>
 
-<div id="footer"></div>
-</div>
-<div class="predict_window" style="display:block">
-    <div class="window">
-        <div class="window_head">
-            <b>prediction
-            <i></i>
-            </b>
-            <span>the winner is:</span>
-            <i style="cursor:pointer" class="window_button_1">close</i>
-        </div>
-        <div class="window_body">
-            <div class="item1">
-                team1
-            </div>
-            <div class="item2">
-                1.0
-            </div>
-            <div class="item3">
-                <input type="text" value="5000" id="predict_number">
-                <i class="window_button_2">predict</i>
-                <p class="item3_win">you can win:</p>
-            </div>
-        </div>
-    </div>
-</div>
 <script>
-    new Vue({
+    var vm = new Vue({
         el:'#app',
         data:{
-            message:"Hello Vue.js",
+            prize:0,
+
+        },
+        watch:{
         }
+
     })
 </script>
 

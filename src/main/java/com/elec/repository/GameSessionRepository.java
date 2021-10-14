@@ -19,4 +19,17 @@ public interface GameSessionRepository {
      * @return
      */
     boolean saveFootballGameDetail(List<GameDetail> details);
+
+    /**
+     * updateResult
+     * @param gameSessions
+     * @return
+     */
+    boolean updateFootballGameDetail(List<GameSession> gameSessions);
+
+    /**
+     * getGameList
+     * @return
+     */
+    List<GameSession> getPostList();
 }

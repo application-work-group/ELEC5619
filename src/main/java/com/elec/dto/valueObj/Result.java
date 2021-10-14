@@ -39,7 +39,12 @@ public final class Result<T> implements Serializable {
         this.success = success;
         this.data = data;
     }
-
+    public static <T> Result<T> succeed() {
+        return new Result(true);
+    }
+    public static <T> Result<T> succeed(T data) {
+        return new Result<T>(true, data);
+    }
 
     /**
      * get,set属性
@@ -52,6 +57,9 @@ public final class Result<T> implements Serializable {
         return data;
     }
 
+    public Result(boolean success, String code, String msg) {
+        this.success = success;
+    }
     public Result setData(T data) {
         this.data = data;
         return this;

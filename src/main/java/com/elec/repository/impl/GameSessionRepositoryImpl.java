@@ -32,4 +32,15 @@ public class GameSessionRepositoryImpl implements GameSessionRepository {
         });
         return this.iGameSessionService.saveBatch(gameSessions);
     }
+
+    @Override
+    public boolean updateFootballGameDetail(List<GameSession> gameSessions) {
+        return false;
+    }
+
+    @Override
+    public List<GameSession> getPostList() {
+        List<GameSession> gameSessions = iGameSessionService.list(new LambdaQueryWrapper<>());
+        return gameSessions;
+    }
 }

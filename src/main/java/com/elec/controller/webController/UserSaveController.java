@@ -1,8 +1,7 @@
 package com.elec.controller.webController;
 
-import com.alibaba.fastjson.JSONObject;
-import com.elec.dal.pojo.UserInfo;
 import com.elec.dto.UserSaveDTO;
+import com.elec.dto.valueObj.Result;
 import com.elec.service.UserSaveService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,10 +20,8 @@ public class UserSaveController {
      * @return
      */
     @PostMapping("/saveUserInfo")
-    public JSONObject saveUserInfo(@RequestBody UserSaveDTO userSaveDTO){
-        JSONObject object = new JSONObject();
-        object.fluentPut("result",this.userSaveService.saveUserInfo(userSaveDTO));
-        return object;
+    public Result<?> saveUserInfo(@RequestBody UserSaveDTO userSaveDTO){
+        return Result.succeed(this.userSaveService.saveUserInfo(userSaveDTO));
     }
 
     /**
@@ -33,10 +30,8 @@ public class UserSaveController {
      * @return
      */
     @PostMapping("/userLogin")
-    public JSONObject userLogin(@RequestBody UserSaveDTO userSaveDTO){
-        JSONObject object = new JSONObject();
-        object.fluentPut("result",this.userSaveService.userLogin(userSaveDTO));
-        return object;
+    public Result<?> userLogin(@RequestBody UserSaveDTO userSaveDTO){
+        return Result.succeed(this.userSaveService.userLogin(userSaveDTO));
     }
 
     /**
@@ -45,8 +40,8 @@ public class UserSaveController {
      * @return
      */
     @GetMapping("/queryUserInfo")
-    public UserInfo queryUserInfo(@RequestParam(value = "userName") String userName){
-        return this.userSaveService.queryUserInfo(userName);
+    public Result<?> queryUserInfo(@RequestParam(value = "userName") String userName){
+        return Result.succeed(this.userSaveService.queryUserInfo(userName));
     }
     /**
      * 获取关注用户列表
@@ -57,10 +52,9 @@ public class UserSaveController {
      * @return
      */
     @GetMapping("/modifyPassword")
-    public JSONObject modifyPassword(@RequestParam(value = "userName")String userName,
+    public Result<?> modifyPassword(@RequestParam(value = "userName")String userName,
                                      @RequestParam(value = "password")String password){
-        JSONObject object = new JSONObject();
-        object.fluentPut("result",this.userSaveService.modifyPassword(userName,password));
-        return object;
+
+        return Result.succeed(this.userSaveService.modifyPassword(userName,password));
     }
 }

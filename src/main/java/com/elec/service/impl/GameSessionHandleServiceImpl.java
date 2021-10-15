@@ -3,11 +3,13 @@ package com.elec.service.impl;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.elec.api.HttpRequestA;
+import com.elec.component.DateGetComponent;
 import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.OperationRecord;
 import com.elec.dto.GameBetDTO;
-import com.elec.dto.valueObj.GameDetail;
-import com.elec.dto.valueObj.Result;
+import com.elec.dto.valueObj.football.FirstLevel;
+import com.elec.dto.valueObj.football.FootballDetail;
+import com.elec.dto.valueObj.football.FootballResult;
 import com.elec.enums.GameVictoryOrDefeatEnums;
 import com.elec.enums.UserOperationEnums;
 import com.elec.repository.GameSessionRepository;
@@ -35,18 +37,32 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
 
     @Override
     public boolean saveDetail() {
-        String uri = "https://odds.p.rapidapi.com/v1/odds?sport=soccer_epl&region=uk&mkt=h2h&dateFormat=iso&oddsFormat=decimal";
+        String date = DateGetComponent.getCurrentDate();
+        String uri = "https://api-football-v1.p.rapidapi.com/v3/fixtures?date="+date+"&league=39&season=2021";
         HttpHeaders headers = new HttpHeaders();
-        headers.add("x-rapidapi-host","odds.p.rapidapi.com");
+        headers.add("x-rapidapi-host","api-football-v1.p.rapidapi.com");
         headers.add("x-rapidapi-key","77bb1ccd20mshed85a95ffefdbebp187d43jsn4773d71cca23");
         ResponseEntity<String> result = HttpRequestA.getResult(headers, uri);
-        String s = JSONObject.toJSONString(result.getBody());
-
-        Result<?> result1 = JSONObject.parseObject(result.getBody(),Result.class);
-        if (null!=result1){
-            final Object data = result1.getData();
+        FirstLevel<?> result1 = JSONObject.parseObject(result.getBody(),FirstLevel.class);
+        if (null != result1){
+            final Object data = result1.getResponse();
             JSONArray array = JSONObject.parseArray(JSONObject.toJSONString(data));
-            List<GameDetail> list = array.toJavaList(GameDetail.class);
+            List<FootballDetail> list = array.toJavaList(FootballDetail.class);
+            list.forEach(l->{
+                Long id = l.getFixture().getId();
+                String uri1 = "https://api-football-v1.p.rapidapi.com/v3/odds?fixture="+id+"&bookmaker=6";
+                ResponseEntity<String> result2 = HttpRequestA.getResult(headers, uri1);
+                FirstLevel<?> result3 = JSONObject.parseObject(result2.getBody(),FirstLevel.class);
+                if (null !=result3){
+                    final Object response = result3.getResponse();
+                    JSONArray array1 = JSONObject.parseArray(JSONObject.toJSONString(response));
+                    List<FootballResult> list1 = array1.toJavaList(FootballResult.class);
+                    String win = list1.get(0).getBookmakers().get(0).getBets().get(0).getValues().get(0).getOdd();
+                    String draw = list1.get(0).getBookmakers().get(0).getBets().get(0).getValues().get(1).getOdd();
+                    String lose = list1.get(0).getBookmakers().get(0).getBets().get(0).getValues().get(2).getOdd();
+                    l.getFixture().setOddsInfo(win+":"+draw+":"+lose+":");
+                }
+            });
             this.gameSessionRepository.saveFootballGameDetail(list);
             return true;
         }else {
@@ -94,7 +110,7 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
             String oddInfo = GameVictoryOrDefeatEnums.DRAW.name()+":"+winOdd.toString();
             operationRecord.setOddsInformation(oddInfo);
         }else {
-            BigDecimal winOdd = list.get(1);
+            BigDecimal winOdd = list.get(2);
             String oddInfo = GameVictoryOrDefeatEnums.DEFEAT.name()+":"+winOdd.toString();
             operationRecord.setOddsInformation(oddInfo);
         }

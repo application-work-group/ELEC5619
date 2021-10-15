@@ -1,6 +1,7 @@
 package com.elec.controller.webController;
 
 import com.elec.dto.GameBetDTO;
+import com.elec.dto.UpdateGameDetailDTO;
 import com.elec.dto.valueObj.Result;
 import com.elec.service.GameSessionHandleService;
 import org.springframework.stereotype.Controller;
@@ -33,5 +34,9 @@ public class GameController {
     public Result<?> getGameList(){
         return Result.succeed(this.gameSessionHandleService.getGameList());
     }
-    //
+    //更新比赛信息
+    @PostMapping("/updateGameInfo")
+    public Result<?> updateGameInfo(@RequestBody UpdateGameDetailDTO updateGameDetailDTO){
+        return Result.succeed(this.gameSessionHandleService.updateGameDetail(updateGameDetailDTO));
+    }
 }

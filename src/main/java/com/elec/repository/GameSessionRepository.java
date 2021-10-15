@@ -40,4 +40,11 @@ public interface GameSessionRepository {
      * @return
      */
     boolean saveUserOperation (OperationRecord operationRecord);
+
+    /**
+     * update
+     * @param gameSession
+     * @return
+     */
+    boolean updateGameDetail(List<GameSession> gameSession);
 }

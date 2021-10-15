@@ -3,12 +3,15 @@ package com.elec.api;
 import com.alibaba.fastjson.JSONObject;
 import com.elec.dal.pojo.UserInfo;
 import com.elec.devTest.BaseTest;
+import com.elec.dto.UpdateGameDetailDTO;
 import com.elec.dto.UserSaveDTO;
 import com.elec.service.GameSessionHandleService;
 import com.elec.service.UserSaveService;
 import org.junit.Test;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SportsTest extends BaseTest {
     @Resource
@@ -34,6 +37,15 @@ public class SportsTest extends BaseTest {
     @Test
     public void test4(){
         this.gameSessionHandleService.saveDetail();
+    }
+    @Test
+    public void test2222(){
+        UpdateGameDetailDTO updateGameDetailDTO = new UpdateGameDetailDTO();
+        List<String> list = new ArrayList<>();
+        String s = "710627";
+        list.add(s);
+        updateGameDetailDTO.setGameId(list);
+        this.gameSessionHandleService.updateGameDetail(updateGameDetailDTO);
     }
     @Test
     public void test22(){

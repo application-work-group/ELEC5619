@@ -2,6 +2,7 @@ package com.elec.service;
 
 import com.elec.dal.pojo.GameSession;
 import com.elec.dto.GameBetDTO;
+import com.elec.dto.UpdateGameDetailDTO;
 
 import java.util.List;
 
@@ -31,4 +32,11 @@ public interface GameSessionHandleService {
      * @return
      */
     boolean saveUserOperation(GameBetDTO gameBetDTO);
+
+    /**
+     * update the detail of the game result
+     * @param updateGameDetailDTO
+     * @return
+     */
+    boolean updateGameDetail(UpdateGameDetailDTO updateGameDetailDTO);
 }

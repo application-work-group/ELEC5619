@@ -7,6 +7,7 @@ import com.elec.component.DateGetComponent;
 import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.OperationRecord;
 import com.elec.dto.GameBetDTO;
+import com.elec.dto.UpdateGameDetailDTO;
 import com.elec.dto.valueObj.football.FirstLevel;
 import com.elec.dto.valueObj.football.FootballDetail;
 import com.elec.dto.valueObj.football.FootballResult;
@@ -28,6 +29,8 @@ import java.util.List;
 public class GameSessionHandleServiceImpl implements GameSessionHandleService {
     @Resource
     private GameSessionRepository gameSessionRepository;
+
+    private HttpHeaders headers = new HttpHeaders();
     @Override
     public GameSession getDetail(Long gameId) {
         GameSession gameSession = this.gameSessionRepository.getDetailById(gameId);
@@ -38,8 +41,8 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
     @Override
     public boolean saveDetail() {
         String date = DateGetComponent.getCurrentDate();
-        String uri = "https://api-football-v1.p.rapidapi.com/v3/fixtures?date="+date+"&league=39&season=2021";
-        HttpHeaders headers = new HttpHeaders();
+        String uri = "https://api-football-v1.p.rapidapi.com/v3/fixtures?date="+"2021-10-02"+"&league=39&season=2021";
+//        HttpHeaders headers = new HttpHeaders();
         headers.add("x-rapidapi-host","api-football-v1.p.rapidapi.com");
         headers.add("x-rapidapi-key","77bb1ccd20mshed85a95ffefdbebp187d43jsn4773d71cca23");
         ResponseEntity<String> result = HttpRequestA.getResult(headers, uri);
@@ -50,7 +53,7 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
             List<FootballDetail> list = array.toJavaList(FootballDetail.class);
             list.forEach(l->{
                 Long id = l.getFixture().getId();
-                String uri1 = "https://api-football-v1.p.rapidapi.com/v3/odds?fixture="+id+"&bookmaker=6";
+                String uri1 = "https://api-football-v1.p.rapidapi.com/v3/odds?fixture="+id.toString()+"&bookmaker=6";
                 ResponseEntity<String> result2 = HttpRequestA.getResult(headers, uri1);
                 FirstLevel<?> result3 = JSONObject.parseObject(result2.getBody(),FirstLevel.class);
                 if (null !=result3){
@@ -117,5 +120,32 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
         operationRecord.setOperationStatus(UserOperationEnums.QUIZ.name());
         operationRecord.setGameSession(gameInfo);
         return this.gameSessionRepository.saveUserOperation(operationRecord);
+    }
+
+    @Override
+    public boolean updateGameDetail(UpdateGameDetailDTO updateGameDetailDTO) {
+        List<String> list = updateGameDetailDTO.getGameId();
+        List<GameSession> gameSessions = new ArrayList<>();
+        list.forEach(l->{
+            GameSession gameSession = new GameSession();
+            gameSession.setGameId(Long.valueOf(l));
+            String uri1 = "https://api-football-v1.p.rapidapi.com/v3/fixtures?id="+l;
+            headers.add("x-rapidapi-host","api-football-v1.p.rapidapi.com");
+            headers.add("x-rapidapi-key","77bb1ccd20mshed85a95ffefdbebp187d43jsn4773d71cca23");
+            ResponseEntity<String> result2 = HttpRequestA.getResult(headers, uri1);
+            FirstLevel<?> result3 = JSONObject.parseObject(result2.getBody(),FirstLevel.class);
+            if (null !=result3){
+                final Object response = result3.getResponse();
+                JSONArray array1 = JSONObject.parseArray(JSONObject.toJSONString(response));
+                List<FootballDetail> list1 = array1.toJavaList(FootballDetail.class);
+                int home = list1.get(0).getGoals().getHome();
+                int away = list1.get(0).getGoals().getAway();
+                String result = home +":"+ away;
+                gameSession.setGameResult(result);
+                gameSessions.add(gameSession);
+        }
+        });
+        this.gameSessionRepository.updateGameDetail(gameSessions);
+        return true;
     }
 }

@@ -1,6 +1,7 @@
 package com.elec.repository.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.elec.convertor.UserConvertor;
 import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.OperationRecord;
@@ -51,5 +52,18 @@ public class GameSessionRepositoryImpl implements GameSessionRepository {
     @Override
     public boolean saveUserOperation(OperationRecord operationRecord) {
         return this.iOperationRecordService.save(operationRecord);
+    }
+
+    @Override
+    public boolean updateGameDetail(List<GameSession> gameSession) {
+        gameSession.forEach(g->{
+            GameSession gameSession1 = iGameSessionService.getOne(new LambdaQueryWrapper<GameSession>()
+                    .eq(GameSession::getGameId,g.getGameId()));
+            gameSession1.setGameResult(g.getGameResult());
+            UpdateWrapper<GameSession> updateWrapper = new UpdateWrapper<>();
+            updateWrapper.eq("game_id",gameSession1.getGameId());
+            this.iGameSessionService.update(gameSession1, updateWrapper);
+        });
+        return true;
     }
 }

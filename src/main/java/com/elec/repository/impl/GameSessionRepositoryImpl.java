@@ -3,7 +3,9 @@ package com.elec.repository.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.elec.convertor.UserConvertor;
 import com.elec.dal.pojo.GameSession;
+import com.elec.dal.pojo.OperationRecord;
 import com.elec.dal.service.IGameSessionService;
+import com.elec.dal.service.IOperationRecordService;
 import com.elec.dto.valueObj.GameDetail;
 import com.elec.repository.GameSessionRepository;
 import org.springframework.stereotype.Repository;
@@ -16,6 +18,8 @@ import java.util.List;
 public class GameSessionRepositoryImpl implements GameSessionRepository {
     @Resource
     private IGameSessionService iGameSessionService;
+    @Resource
+    private IOperationRecordService iOperationRecordService;
     @Override
     public GameSession getDetailById(Long gameId) {
         GameSession gameSession = this.iGameSessionService.getOne(new LambdaQueryWrapper<GameSession>()
@@ -42,5 +46,10 @@ public class GameSessionRepositoryImpl implements GameSessionRepository {
     public List<GameSession> getPostList() {
         List<GameSession> gameSessions = iGameSessionService.list(new LambdaQueryWrapper<>());
         return gameSessions;
+    }
+
+    @Override
+    public boolean saveUserOperation(OperationRecord operationRecord) {
+        return this.iOperationRecordService.save(operationRecord);
     }
 }

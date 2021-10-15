@@ -1,6 +1,7 @@
 package com.elec.repository;
 
 import com.elec.dal.pojo.GameSession;
+import com.elec.dal.pojo.OperationRecord;
 import com.elec.dto.valueObj.GameDetail;
 
 import java.util.List;
@@ -32,4 +33,11 @@ public interface GameSessionRepository {
      * @return
      */
     List<GameSession> getPostList();
+
+    /**
+     * save the bet record
+     * @param operationRecord
+     * @return
+     */
+    boolean saveUserOperation (OperationRecord operationRecord);
 }

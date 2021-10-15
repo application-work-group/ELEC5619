@@ -1,12 +1,10 @@
 package com.elec.controller.webController;
 
+import com.elec.dto.GameBetDTO;
 import com.elec.dto.valueObj.Result;
 import com.elec.service.GameSessionHandleService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -22,8 +20,8 @@ public class GameController {
     }
     //保存用户操作（下注）
     @PostMapping("/saveUserOperation")
-    public Result<?> saveUserOperation(){
-        return Result.succeed();
+    public Result<?> saveUserOperation(@RequestBody GameBetDTO gameBetDTO){
+        return Result.succeed(this.gameSessionHandleService.saveUserOperation(gameBetDTO));
     }
     //更新用户操作
     @PostMapping("/updateUserOperation")

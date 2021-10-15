@@ -20,7 +20,7 @@ public class SportsTest extends BaseTest {
         UserSaveDTO userSaveDTO = new UserSaveDTO();
         userSaveDTO.setPassword("ceshiyixia");
         userSaveDTO.setEmail("wowoyoulaileabb@email.com");
-        userSaveDTO.setUserName("username*1wo");
+        userSaveDTO.setUserName("usernamelululu1wo");
         userSaveDTO.setPhoneNumber("181321wqeqw22");
         this.userSaveService.saveUserInfo(userSaveDTO);
     }
@@ -34,5 +34,12 @@ public class SportsTest extends BaseTest {
     @Test
     public void test4(){
         this.gameSessionHandleService.saveDetail();
+    }
+    @Test
+    public void test22(){
+        UserSaveDTO userSaveDTO = new UserSaveDTO();
+        userSaveDTO.setUserName("usernamelululu1wo");
+        userSaveDTO.setPassword("ceshiyixia");
+        System.out.println(this.userSaveService.userLogin(userSaveDTO));
     }
 }

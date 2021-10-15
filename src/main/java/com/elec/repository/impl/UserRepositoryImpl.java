@@ -1,6 +1,7 @@
 package com.elec.repository.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.elec.convertor.UserConvertor;
 import com.elec.dal.pojo.User;
 import com.elec.dal.pojo.UserInfo;
@@ -67,7 +68,8 @@ public class UserRepositoryImpl implements UserRepository {
         User user = iUserService.getOne(new LambdaQueryWrapper<User>()
                 .eq(User::getUserName,userName));
         user.setPassword(password);
-        return this.iUserService.update(new LambdaQueryWrapper<User>()
-                .eq(User::getUserName, userName));
+        UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("user_name",userName);
+        return this.iUserService.update(user,updateWrapper);
     }
 }

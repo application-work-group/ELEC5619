@@ -41,7 +41,7 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
     @Override
     public boolean saveDetail() {
         String date = DateGetComponent.getCurrentDate();
-        String uri = "https://api-football-v1.p.rapidapi.com/v3/fixtures?date="+"2021-10-02"+"&league=39&season=2021";
+        String uri = "https://api-football-v1.p.rapidapi.com/v3/fixtures?date="+date+"&league=39&season=2021";
 //        HttpHeaders headers = new HttpHeaders();
         headers.add("x-rapidapi-host","api-football-v1.p.rapidapi.com");
         headers.add("x-rapidapi-key","77bb1ccd20mshed85a95ffefdbebp187d43jsn4773d71cca23");

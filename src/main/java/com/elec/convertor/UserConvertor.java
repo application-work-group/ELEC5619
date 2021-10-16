@@ -52,8 +52,8 @@ public class UserConvertor {
         gameSession.setGameType(GameTypeEnums.FOOTBALL.name());
         final long time = gameDetail.getFixture().getTimestamp().getTime();
         gameSession.setGameTime(new Date(time*1000));
-        gameSession.setGmtCreate(new Date());
-        gameSession.setGmtModified(new Date());
+//        gameSession.setGmtCreate(new Date());
+//        gameSession.setGmtModified(new Date());
         gameSession.setHome(gameDetail.getTeams().getHome().getName());
         gameSession.setAway(gameDetail.getTeams().getAway().getName());
         gameSession.setLeague(gameDetail.getLeague().getName());

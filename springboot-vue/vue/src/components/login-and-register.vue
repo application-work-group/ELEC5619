@@ -9,8 +9,8 @@
       </div>
       <!--登陆-->
       <form class="input-group" v-show="isLoginPage">
-        <input type="text" class="input-field" placeholder="User Id" v-model="logInId">
-        <input type="password" class="input-field" placeholder="Enter password" v-model="logInPassword">
+        <input type="text" class="input-field" placeholder="User Id" v-model="loginInfo.Id">
+        <input type="password" class="input-field" placeholder="Enter password" v-model="loginInfo.password">
         <button type="submit" class="submit-btn" @click="login">Log in</button>
         <!--注册-->
       </form>

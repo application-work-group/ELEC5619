@@ -8,6 +8,7 @@
       <el-col :span="21"><div class="grid-content bg-purple-light">
 
           <h3> 用户名：{{ userName }} </h3>
+        <el-button type="danger" round style="justify-content: end" @click = "logout">Logout</el-button>
           <div class = "otherInformation"> 其他个人信息, 比如等级，签名 </div>
 
       </div></el-col>
@@ -23,6 +24,13 @@ export default {
   data(){
     return{
       userName:''
+    }
+  },
+  methods:{
+    logout(){
+      this.$router.push({
+        name: 'login'
+      })
     }
   },
   created() {
@@ -52,6 +60,10 @@ img{
   width: 120px;
 }
 
+h3{
+  display: inline-block;
+  width: 900px;
+}
 .personInformation{
   display: inline;
   height: inherit;

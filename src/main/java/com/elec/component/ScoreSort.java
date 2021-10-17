@@ -15,15 +15,16 @@ public class ScoreSort {
             response.setCurrScores(userInfo.getCurrScores());
             response.setUserName(userInfo.getUserName());
         });
+        sortList(userInfos);
         return list;
     }
-    private void sortList(List<UserInfo> userInfos){
+    private static void sortList(List<UserInfo> userInfos){
         Comparator<UserInfo> comparator = new Comparator<UserInfo>() {
             @Override
             public int compare(UserInfo o1, UserInfo o2) {
                 if (o1.getCurrScores().equals(o2.getCurrScores()) ){
                     return -1;
-                } else if (o1.getCurrScores() > o2.getCurrScores()){
+                } else if (o1.getCurrScores() < o2.getCurrScores()){
                     return 1;
                 } else {
                     return -1;

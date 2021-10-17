@@ -2,6 +2,7 @@ package com.elec.controller.webController;
 
 import com.alibaba.fastjson.JSONObject;
 import com.elec.dto.PostSaveDTO;
+import com.elec.dto.valueObj.Result;
 import com.elec.service.PostsSaveService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,18 +16,14 @@ public class PostsController {
     private PostsSaveService postsSaveService;
     //发帖帖子入库
     @PostMapping("/savePost")
-    public JSONObject savePost(@RequestBody PostSaveDTO postSaveDTO){
-        JSONObject object = new JSONObject();
-        object.fluentPut("result",this.postsSaveService.savePostInfo(postSaveDTO));
-        return object;
+    public Result<?> savePost(@RequestBody PostSaveDTO postSaveDTO){
+        return Result.succeed(this.postsSaveService.savePostInfo(postSaveDTO));
     }
     //获取帖子详情
     @GetMapping("/getPostDetail")
-    public JSONObject getPostDetail(@RequestParam(value = "postId") String postId){
-        JSONObject object = new JSONObject();
+    public Result<?> getPostDetail(@RequestParam(value = "postId") String postId){
         PostSaveDTO postSaveDTO= this.postsSaveService.queryPostInfoById(postId);
-        object.fluentPut("postDetail",postSaveDTO);
-        return object;
+        return Result.succeed(postSaveDTO);
     }
     //更新帖子信息
     @PostMapping("/updatePostInfo")

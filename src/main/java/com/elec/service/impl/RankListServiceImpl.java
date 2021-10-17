@@ -19,7 +19,11 @@ public class RankListServiceImpl implements RankListService {
         //积分排序
         ScoreSort.sort(infos);
         //截取50条数据
-        List<UserInfo> newList = infos.subList(0, 50);
-        return newList;
+        if (infos.size()<20){
+            return infos;
+        }else {
+            List<UserInfo> newList = infos.subList(0, 20);
+            return newList;
+        }
     }
 }

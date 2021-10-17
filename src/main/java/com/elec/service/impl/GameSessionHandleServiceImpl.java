@@ -82,9 +82,9 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
         if(listNum < list.size()) {
             returnNum = listNum;
         }
-        int randomIndex =  (int) (Math.random() * (list.size()-returnNum));
+//        int randomIndex =  (int) (Math.random() * (list.size()-returnNum));
         List<GameSession> resultList= new ArrayList<>();
-        for (int i = randomIndex; i < randomIndex+returnNum; i++) {
+        for (int i = list.size()-1; i > list.size()-returnNum-1; i--) {
             resultList.add(list.get(i));
         }
         return resultList;

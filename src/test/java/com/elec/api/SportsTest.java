@@ -1,6 +1,7 @@
 package com.elec.api;
 
 import com.alibaba.fastjson.JSONObject;
+import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.UserInfo;
 import com.elec.devTest.BaseTest;
 import com.elec.dto.UpdateGameDetailDTO;
@@ -53,5 +54,10 @@ public class SportsTest extends BaseTest {
         userSaveDTO.setUserName("usernamelululu1wo");
         userSaveDTO.setPassword("ceshiyixia");
         System.out.println(this.userSaveService.userLogin(userSaveDTO));
+    }
+    @Test
+    public void test213(){
+        final List<GameSession> gameList = this.gameSessionHandleService.getGameList();
+        System.out.println(JSONObject.toJSONString(gameList));
     }
 }

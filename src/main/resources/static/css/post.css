@@ -131,7 +131,12 @@ a{
     height:40px;
     border-bottom: 1px solid #eee;
 }
-
+.post_content{
+    width: 70%;
+    float: left;
+    border: 1px #f7f7f7 solid;
+    height: 70%
+}
 .post_title{
     height:48px;
 }
@@ -142,4 +147,58 @@ a{
     overflow:hidden;
     text-overflow:ellipsis;
 }
+
+.content_block{
+    padding:20px 69px 30px 20px;
+    background: #f9f9f9;
+}
+
+.release_button{
+    display:inline-block;
+    width:128px;
+    height:36px;
+    background-color: #a55555;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 36px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.reply{
+    background: #F9F9F9;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.reply_title{
+    margin: -4px 0 16px;
+}
+
+.reply_title_text{
+    font-size:14px;
+    color: #4e5158;
+}
+
+.reply_container{
+    display:flex;
+}
+
+.reply_container a{
+    width:10%;
+}
+
+.reply_editor{
+    width:90%;
+    position: relative;
+}
+
+.reply_editor_input{
+    width:100%;
+    background:#f9f9f9;
+    position: relative;
+    cursor:text;
+}
+
 

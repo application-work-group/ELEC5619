@@ -26,6 +26,6 @@ public class GameSessionController {
     }
     @RequestMapping("/test1shuyuan")
     public String test1shuyuan(){
-        return "hello";
+        return "post";
     }
 }

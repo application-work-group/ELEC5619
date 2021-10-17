@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="../static/css/game.css">
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="../static/js/detail.js"></script>
 </head>
@@ -18,7 +18,7 @@
                         <a href="http://localhost:8080/game-session/test1shuyuan">homepage</a>
                     </li>
                     <li class="line">|</li>
-                    <li class="empty"></li>
+                    <li>football</li>
                     <li class="line">|</li>
                     <li class="empty"></li>
                 </ul>
@@ -155,17 +155,18 @@
                         <div class="team_a">
                             <div class="message">
                                 <h2>&nbsp;</h2>
-                                <p>team_a name</p>
-                                <div>home guest(win/lose)</div>
+                                <p th:text="${gameSession.home}">team_a name</p>
+                                <div></div>
                             </div>
                         </div>
                         <div class="team_b">
                             <div class="message">
                                 <h2>&nbsp;</h2>
-                                <p>team_b name</p>
-                                <div>home guest(win/lose)</div>
+                                <p th:text="${gameSession.away}">team_b name</p>
+                                <div></div>
                             </div>
                         </div>
+                        <div class="game_information" th:text="'game time: '+${gameSession.gameTime}+',league :'+${gameSession.league}"></div>
                     </div>
                     <div class="info">
 
@@ -180,12 +181,12 @@
                 </div>
                 <div class="predict_list">
                     <span class="team_a_button">
-                        <i>team1</i>
+                        <i th:text="${gameSession.home}">team1</i>
                         <b>1.00</b>
                     </span>
 
                     <span class="team_b_button">
-                        <i>team2</i>
+                        <i th:text="${gameSession.away}">team2</i>
                         <b>2.00</b>
                     </span>
                 </div>
@@ -197,12 +198,12 @@
                 </div>
                 <div class="predict_list">
                     <span class="team_a_button">
-                        <i>team1</i>
+                        <i th:text="${gameSession.home}">team1</i>
                         <b>1.00</b>
                     </span>
 
                     <span class="team_b_button">
-                        <i>team2</i>
+                        <i th:text="${gameSession.away}">team2</i>
                         <b>1.00</b>
                     </span>
                 </div>
@@ -287,7 +288,7 @@
 </div>
 
 <div id="app">
-    <p> {{message}}</p>
+    <p> {</p>
 </div>
 </div>
 <div th:text="${name}"></div>

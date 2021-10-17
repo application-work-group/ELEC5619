@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-@Controller
+@RestController
 @RequestMapping("/save/userInfo")
 public class UserSaveController {
     @Resource
     private UserSaveService userSaveService;
-
+    @PostMapping(value="/test")
+    public String test(){
+        return "suc";
+    }
     /**
      * 保存用户信息
      * @param userSaveDTO

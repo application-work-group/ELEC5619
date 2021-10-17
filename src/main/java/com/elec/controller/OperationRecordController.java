@@ -1,6 +1,8 @@
 package com.elec.controller;
 
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -16,5 +18,8 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequestMapping("/operation-record")
 public class OperationRecordController {
-
+    @GetMapping("/test")
+    public String test(){
+        return "suc";
+    }
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-@Controller
+@RestController
 @RequestMapping("/game/gameSession")
 public class GameController {
     @Resource

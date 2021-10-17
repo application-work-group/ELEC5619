@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     $(".team_a_button").click(function(){
         $(".item1").text($(this).find("i").text());

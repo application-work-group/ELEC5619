@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-@Controller
+@RestController
 @RequestMapping("/save/post")
 public class PostsController {
     @Resource
     private PostsSaveService postsSaveService;
     //发帖帖子入库
+    @CrossOrigin
     @PostMapping("/savePost")
     public JSONObject savePost(@RequestBody PostSaveDTO postSaveDTO){
         JSONObject object = new JSONObject();

@@ -65,84 +65,18 @@
             <div class="table_list_c">
                 <div class="table">
                     <ul>
-                        <li>
+                        <li th:each="gamelist:${gslist}">
                             <a href="../game-session/test1shuyuan">
-                                <p>monday</p>
+                                <p th:text="${gamelist.league}">monday</p>
                                 <div class="team">
-                                    <span class="name">10-04</span>
+                                    <span class="name" th:text="${gamelist.home}">10-04</span>
                                 </div>
+                                <div class="vs">vs</div>
                                 <div class="team2">
-                                    <span class="name">1 game</span>
+                                    <span class="name" th:text="${gamelist.away}">1 game</span>
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a href="../game-session/test1shuyuan">
-                                <p>monday</p>
-                                <div class="team">
-                                    <span class="name">10-04</span>
-                                </div>
-                                <div class="team2">
-                                    <span class="name">1 game</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../game-session/test1shuyuan">
-                                <p>monday</p>
-                                <div class="team">
-                                    <span class="name">10-04</span>
-                                </div>
-                                <div class="team2">
-                                    <span class="name">1 game</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../game-session/test1shuyuan">
-                                <p>monday</p>
-                                <div class="team">
-                                    <span class="name">10-04</span>
-                                </div>
-                                <div class="team2">
-                                    <span class="name">1 game</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../game-session/test1shuyuan">
-                                <p>monday</p>
-                                <div class="team">
-                                    <span class="name">10-04</span>
-                                </div>
-                                <div class="team2">
-                                    <span class="name">1 game</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../game-session/test1shuyuan">
-                                <p>monday</p>
-                                <div class="team">
-                                    <span class="name">10-04</span>
-                                </div>
-                                <div class="team2">
-                                    <span class="name">1 game</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../game-session/test1shuyuan">
-                                <p>monday</p>
-                                <div class="team">
-                                    <span class="name">10-04</span>
-                                </div>
-                                <div class="team2">
-                                    <span class="name">1 game</span>
-                                </div>
-                            </a>
-                        </li>
-
                     </ul>
                 </div>
             </div>
@@ -219,19 +153,19 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="../game-session/test1shuyuan">123</a>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist1.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan">123</a>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist2.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan">123</a>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist3.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan">123</a>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist4.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan">123</a>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist5.title}">123</a>
                     </li>
                 </ul>
             </div>
@@ -242,19 +176,19 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="../game-session/test1shuyuan">123</a>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist1.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan">123</a>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist2.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan">123</a>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist3.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan">123</a>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist4.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan">123</a>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist5.title}">123</a>
                     </li>
                 </ul>
             </div>
@@ -291,7 +225,7 @@
     <p> {</p>
 </div>
 </div>
-<div th:text="${name}"></div>
+<div></div>
 
 <script>
     var vm = new Vue({

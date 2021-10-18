@@ -1,10 +1,17 @@
 package com.elec.service.impl;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.elec.component.GenerateId;
 import com.elec.dal.pojo.PostInfo;
+import com.elec.dal.pojo.UserInfo;
 import com.elec.dto.PostSaveDTO;
+import com.elec.dto.UserSaveDTO;
 import com.elec.repository.PostRepository;
 import com.elec.service.PostsSaveService;
+import com.elec.service.UserSaveService;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,11 +22,30 @@ import java.util.List;
 public class PostsSaveServiceImpl implements PostsSaveService {
     @Resource
     private PostRepository postRepository;
+    @Resource
+    private UserSaveService userSaveService;
     @Override
     public Boolean savePostInfo(PostSaveDTO postSaveDTO) {
         String postId = GenerateId.getGeneratID().toString();
         postSaveDTO.setPostId(postId);
-        this.postRepository.save(postSaveDTO);
+        final Boolean save = this.postRepository.save(postSaveDTO);
+        if (save){
+            final UserInfo userInfo = this.userSaveService.queryUserInfo(postSaveDTO.getUserName());
+            if (StringUtils.isNotBlank(userInfo.getPostList())){
+                JSONArray array = JSONArray.parseArray(userInfo.getPostList());
+                List<String> list = array.toJavaList(String.class);
+                list.add(postId);
+                userInfo.setPostList(JSONObject.toJSONString(list));
+                final UserSaveDTO userSaveDTO = this.UserInfo2userSaveDTO(userInfo);
+                this.userSaveService.saveUserInfo(userSaveDTO);
+            }else {
+                List<String> list = new ArrayList<>();
+                list.add(postId);
+                userInfo.setPostList(JSONObject.toJSONString(list));
+                final UserSaveDTO userSaveDTO = this.UserInfo2userSaveDTO(userInfo);
+                this.userSaveService.saveUserInfo(userSaveDTO);
+            }
+        }
         return true;
     }
 
@@ -44,5 +70,11 @@ public class PostsSaveServiceImpl implements PostsSaveService {
             resultList.add(list.get(i));
         }
         return resultList;
+    }
+
+    public UserSaveDTO UserInfo2userSaveDTO(UserInfo userInfo){
+        UserSaveDTO userSaveDTO = new UserSaveDTO();
+        BeanUtils.copyProperties(userInfo,userSaveDTO);
+        return userSaveDTO;
     }
 }

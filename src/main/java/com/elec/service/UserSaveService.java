@@ -12,6 +12,13 @@ public interface UserSaveService {
     Boolean saveUserInfo(UserSaveDTO userSaveDTO);
 
     /**
+     * 更新用户发帖信息
+     * @param userSaveDTO
+     * @return
+     */
+    Boolean updateUserInfo(UserSaveDTO userSaveDTO);
+
+    /**
      * 用户登录
      * @param userSaveDTO
      * @return

@@ -38,6 +38,7 @@ public class UserConvertor {
     public static PostInfo convert2PostInfo(PostSaveDTO postSaveDTO){
         PostInfo postInfo = new PostInfo();
         postInfo.setUserName(postSaveDTO.getUserName());
+        postInfo.setPostId(Long.parseLong(postSaveDTO.getPostId()));
         postInfo.setTitle(postSaveDTO.getTitle());
         postInfo.setContent(postSaveDTO.getContent());
         postInfo.setGameType(postSaveDTO.getGameType());

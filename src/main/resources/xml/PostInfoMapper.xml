@@ -6,6 +6,7 @@
     <resultMap id="BaseResultMap" type="com.elec.dal.pojo.PostInfo">
         <id column="id" property="id" />
         <result column="user_name" property="userName" />
+        <result column="post_id" property="postId" />
         <result column="game_type" property="gameType" />
         <result column="title" property="title" />
         <result column="content" property="content" />
@@ -16,7 +17,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, user_name, game_type, title, content, comment, gmt_create, gmt_modified
+        id, user_name, post_id, game_type, title, content, comment, gmt_create, gmt_modified
     </sql>
 
 </mapper>

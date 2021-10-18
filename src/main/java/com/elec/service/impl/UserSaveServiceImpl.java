@@ -33,12 +33,6 @@ public class UserSaveServiceImpl implements UserSaveService {
     }
 
     @Override
-    public Boolean updateUserInfo(UserSaveDTO userSaveDTO) {
-
-        return null;
-    }
-
-    @Override
     public Boolean userLogin(UserSaveDTO userSaveDTO) {
         String password = MD5Utils.stringToMD5(userSaveDTO.getPassword());
         userSaveDTO.setPassword(password);

@@ -42,7 +42,7 @@ public class UserTest extends BaseTest {
     public void testM1235(){
         PostSaveDTO postSaveDTO = new PostSaveDTO();
         postSaveDTO.setGameType(GameTypeEnums.FOOTBALL.name());
-        postSaveDTO.setUserName("nanmenamenmandsa");
+        postSaveDTO.setUserName("usernamelululu1wo");
         postSaveDTO.setTitle("this is title");
         postSaveDTO.setContent("this is content");
         postSaveDTO.setComment("this is comment");

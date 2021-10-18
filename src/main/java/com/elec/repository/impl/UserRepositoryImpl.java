@@ -72,4 +72,13 @@ public class UserRepositoryImpl implements UserRepository {
         updateWrapper.eq("user_name",userName);
         return this.iUserService.update(user,updateWrapper);
     }
+
+
+    @Override
+    public Boolean updateUserInfo(UserInfo userInfo) {
+        UpdateWrapper<UserInfo> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("user_name",userInfo.getUserName());
+        return userInfoService.update(userInfo,updateWrapper);
+    }
+
 }

@@ -54,4 +54,10 @@ public interface UserRepository {
      * @return
      */
     boolean modifyPassword(String userName,String password);
+    /**
+     * 更新用户发帖信息
+     * @param userInfo
+     * @return
+     */
+    Boolean updateUserInfo(UserInfo userInfo);
 }

@@ -1,12 +1,22 @@
 package com.elec.service;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.elec.api.HttpRequestA;
+import com.elec.component.DateGetComponent;
+import com.elec.dto.valueObj.basketball.BasketDetail;
+import com.elec.dto.valueObj.football.FirstLevel;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TestService {
+    private final String date = DateGetComponent.getCurrentDate();
+
+    private final HttpHeaders headers = new HttpHeaders();
     boolean saveFootballDetail(){
         String uri = "https://odds.p.rapidapi.com/v1/odds?sport=soccer_epl&region=uk&mkt=h2h&dateFormat=iso&oddsFormat=decimal";
         HttpHeaders headers = new HttpHeaders();
@@ -85,5 +95,22 @@ public class TestService {
 //        String date2= simpleDateFormat.format(calendar.getTime());
 //
 //        System.out.println(date2);
+
+//        String date = DateGetComponent.getCurrentDate();
+        String date = "2021-01-21";
+        HttpHeaders headers = new HttpHeaders();
+
+        String uri = "https://api-basketball.p.rapidapi.com/games?season=2020-2021&league=12&date="+date;
+        headers.add("x-rapidapi-host","api-basketball.p.rapidapi.com");
+        headers.add("x-rapidapi-key","77bb1ccd20mshed85a95ffefdbebp187d43jsn4773d71cca23");
+        ResponseEntity<String> result = HttpRequestA.getResult(headers, uri);
+        FirstLevel<?> result1 = JSONObject.parseObject(result.getBody(),FirstLevel.class);
+        if (null!=result1){
+            final Object response = result1.getResponse();
+            JSONArray array = JSONObject.parseArray(JSONObject.toJSONString(response));
+            List<BasketDetail> list = array.toJavaList(BasketDetail.class);
+            System.out.println(JSONObject.toJSONString(list));
+        }
+
     }
 }

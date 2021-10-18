@@ -7,6 +7,7 @@ import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.OperationRecord;
 import com.elec.dal.service.IGameSessionService;
 import com.elec.dal.service.IOperationRecordService;
+import com.elec.dto.valueObj.basketball.BasketDetail;
 import com.elec.dto.valueObj.football.FootballDetail;
 import com.elec.repository.GameSessionRepository;
 import org.springframework.stereotype.Repository;
@@ -33,6 +34,16 @@ public class GameSessionRepositoryImpl implements GameSessionRepository {
         List<GameSession> gameSessions = new ArrayList<>();
         details.forEach(detail->{
             GameSession gameSession = UserConvertor.convert2GameSession(detail);
+            gameSessions.add(gameSession);
+        });
+        return this.iGameSessionService.saveBatch(gameSessions);
+    }
+
+    @Override
+    public boolean saveBasketballGameDetail(List<BasketDetail> details) {
+        List<GameSession> gameSessions = new ArrayList<>();
+        details.forEach(detail->{
+            GameSession gameSession = UserConvertor.convert2BasketballGameSession(detail);
             gameSessions.add(gameSession);
         });
         return this.iGameSessionService.saveBatch(gameSessions);

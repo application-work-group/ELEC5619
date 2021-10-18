@@ -2,6 +2,7 @@ package com.elec.repository;
 
 import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.OperationRecord;
+import com.elec.dto.valueObj.basketball.BasketDetail;
 import com.elec.dto.valueObj.football.FootballDetail;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public interface GameSessionRepository {
      * @return
      */
     boolean saveFootballGameDetail(List<FootballDetail> details);
+    boolean saveBasketballGameDetail(List<BasketDetail> details);
 
     /**
      * updateResult

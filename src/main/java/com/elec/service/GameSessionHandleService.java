@@ -15,10 +15,15 @@ public interface GameSessionHandleService {
     GameSession getDetail(Long gameId);
 
     /**
-     * save
+     * saveFootball
      * @return
      */
     boolean saveDetail();
+    /**
+     * saveBasketball
+     * @return
+     */
+    boolean saveBasketballDetail();
 
     /**
      * get game list

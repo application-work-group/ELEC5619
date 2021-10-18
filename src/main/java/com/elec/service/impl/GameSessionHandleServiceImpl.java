@@ -8,6 +8,8 @@ import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.OperationRecord;
 import com.elec.dto.GameBetDTO;
 import com.elec.dto.UpdateGameDetailDTO;
+import com.elec.dto.valueObj.basketball.BasketDetail;
+import com.elec.dto.valueObj.basketball.BasketballResult;
 import com.elec.dto.valueObj.football.FirstLevel;
 import com.elec.dto.valueObj.football.FootballDetail;
 import com.elec.dto.valueObj.football.FootballResult;
@@ -29,18 +31,17 @@ import java.util.List;
 public class GameSessionHandleServiceImpl implements GameSessionHandleService {
     @Resource
     private GameSessionRepository gameSessionRepository;
+    private final String date = DateGetComponent.getCurrentDate();
 
-    private HttpHeaders headers = new HttpHeaders();
+    private final HttpHeaders headers = new HttpHeaders();
     @Override
     public GameSession getDetail(Long gameId) {
         GameSession gameSession = this.gameSessionRepository.getDetailById(gameId);
-
         return gameSession;
     }
 
     @Override
     public boolean saveDetail() {
-        String date = DateGetComponent.getCurrentDate();
         String uri = "https://api-football-v1.p.rapidapi.com/v3/fixtures?date="+date+"&league=39&season=2021";
 //        HttpHeaders headers = new HttpHeaders();
         headers.add("x-rapidapi-host","api-football-v1.p.rapidapi.com");
@@ -63,12 +64,45 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
                     String win = list1.get(0).getBookmakers().get(0).getBets().get(0).getValues().get(0).getOdd();
                     String draw = list1.get(0).getBookmakers().get(0).getBets().get(0).getValues().get(1).getOdd();
                     String lose = list1.get(0).getBookmakers().get(0).getBets().get(0).getValues().get(2).getOdd();
-                    l.getFixture().setOddsInfo(win+":"+draw+":"+lose+":");
+                    l.getFixture().setOddsInfo(win+":/"+draw+":/"+lose+":");
                 }
             });
             this.gameSessionRepository.saveFootballGameDetail(list);
             return true;
         }else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean saveBasketballDetail() {
+        String uri = "https://api-basketball.p.rapidapi.com/games?season=2021-2022&league=12&date="+date;
+        headers.add("x-rapidapi-host","api-basketball.p.rapidapi.com");
+        headers.add("x-rapidapi-key","77bb1ccd20mshed85a95ffefdbebp187d43jsn4773d71cca23");
+        ResponseEntity<String> result = HttpRequestA.getResult(headers, uri);
+        FirstLevel<?> result1 = JSONObject.parseObject(result.getBody(),FirstLevel.class);
+        if (null!=result1){
+            final Object response = result1.getResponse();
+            JSONArray array = JSONObject.parseArray(JSONObject.toJSONString(response));
+            List<BasketDetail> list = array.toJavaList(BasketDetail.class);
+            list.forEach(l->{
+                Long id = l.getId();
+                String uri1 = "https://api-basketball.p.rapidapi.com/odds?league=12&season=2021-2022&game="+id+"&bookmaker=27&bet=1";
+                ResponseEntity<String> result2 = HttpRequestA.getResult(headers, uri1);
+                FirstLevel<?> result11 = JSONObject.parseObject(result.getBody(),FirstLevel.class);
+                if (null!=result11){
+                    final Object o = result11.getResponse();
+                    JSONArray array1 = JSONObject.parseArray(JSONObject.toJSONString(o));
+                    List<BasketballResult> list1 = array1.toJavaList(BasketballResult.class);
+                    String win = list1.get(0).getBookmakers().get(0).getBets().get(0).getValues().get(0).getOdd();
+                    String draw = list1.get(0).getBookmakers().get(0).getBets().get(0).getValues().get(1).getOdd();
+                    String lose = list1.get(0).getBookmakers().get(0).getBets().get(0).getValues().get(2).getOdd();
+                    l.setOddsInfo(win+":/"+draw+":/"+lose+":");
+                }
+            });
+            this.gameSessionRepository.saveBasketballGameDetail(list);
+            return true;
+        }else{
             return false;
         }
     }

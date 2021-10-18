@@ -40,4 +40,9 @@ public class GameController {
     public Result<?> updateGameInfo(@RequestBody UpdateGameDetailDTO updateGameDetailDTO){
         return Result.succeed(this.gameSessionHandleService.updateGameDetail(updateGameDetailDTO));
     }
+    //保存篮球
+    @PostMapping
+    public Result<?> saveBasketballDetail(){
+        return Result.succeed(this.gameSessionHandleService.saveBasketballDetail());
+    }
 }

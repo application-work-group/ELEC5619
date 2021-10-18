@@ -5,6 +5,7 @@ import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.PostInfo;
 import com.elec.dal.pojo.User;
 import com.elec.dal.pojo.UserInfo;
+import com.elec.dto.valueObj.basketball.BasketDetail;
 import com.elec.dto.valueObj.football.FootballDetail;
 import com.elec.dto.PostSaveDTO;
 import com.elec.dto.UserSaveDTO;
@@ -61,6 +62,19 @@ public class UserConvertor {
         gameSession.setOddsInformation(gameDetail.getFixture().getOddsInfo());
         gameSession.setGameResult(gameDetail.getScore().getFulltime().getHome()
                 +":"+gameDetail.getScore().getFulltime().getAway());
+        return gameSession;
+    }
+    public static GameSession convert2BasketballGameSession(BasketDetail detail){
+        GameSession gameSession = new GameSession();
+        gameSession.setGameId(detail.getId());
+        gameSession.setGameType(GameTypeEnums.BASKETBALL.name());
+        final long time = detail.getTimestamp().getTime();
+        gameSession.setGameTime(new Date(time*1000));
+        gameSession.setHome(detail.getTeams().getHome().getName());
+        gameSession.setAway(detail.getTeams().getAway().getName());
+        gameSession.setOddsInformation(detail.getOddsInfo());
+        gameSession.setGameResult(detail.getScores().getHome().toString()
+                +":"+detail.getScores().getAway().toString());
         return gameSession;
     }
 }

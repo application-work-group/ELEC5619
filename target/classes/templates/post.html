@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/post.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../static/js/ajax.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="topbar">
+        <div id="topbarNav">
+            <div class="topbarNav-left">
+                <ul class="quickNav">
+                    <li class="homepage">
+                        <a href="http://localhost:8080/game-session/test1shuyuan">homepage</a>
+                    </li>
+                    <li class="line">|</li>
+                    <li class="empty"></li>
+                    <li class="line">|</li>
+                    <li class="empty"></li>
+                </ul>
+            </div>
+            <div class="topbarNav-right">
+                welcome
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="website-name">
+            <a href="../game-session/test1shuyuan">
+                <img src="../static/images/sport.jpg" alt="Home" width="60px" height="50px">
+            </a>
+
+        </div>
+        <div class="mainNav">
+            <div class="nav">
+                <div class="nav-ul">
+                    <ul class="nav-item">
+                        <li>mainpage</li>
+                        <li>|</li>
+                        <li>football</li>
+                        <li>|</li>
+                        <li>more</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="subnav">
+                <div class="subnav-ul">
+                    <ul class="nav-item">
+                        <li>1</li>
+                        <li>|</li>
+                        <li>2</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post">
+        <div class="post_content">
+            <div class="nav">
+                <section class="sec">
+                    <span>
+                        <a href="../game-session/test1shuyuan">community</a>
+                        <i> > </i>
+                    </span>
+                </section>
+            </div>
+            <div class="post_title">
+                <h1 th:text="${post1234.title}" class="h1_title">title</h1>
+            </div>
+            <div class="content_block">
+                <div class="content">
+                    <div class="post_user">
+
+                    </div>
+                    <div class="main-post">
+                        <div class="detail">
+                            <div class="dom">
+                                <p></p>
+                                <p></p>
+                                <img src="../static/images/sport.jpg" alt="s">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="button-list">
+                            <div class="button">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-post">
+
+            </div>
+            <div class="reply">
+                <div class="reply_title">
+                    <span class="reply_title_text">Re: title</span>
+                </div>
+                <div class="reply_container">
+                    <a></a>
+                    <div class="reply_editor">
+                        <div class="reply_editor_input">
+                            <textarea name="reply_editor" id="reply_textarea" cols="80" rows="10"></textarea>
+                        </div>
+                        <div class="reply_button">
+                            <button class="release_button">
+                                reply
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="game_comment_box">
+            <div class="block">
+            </div>
+            <div class="comment_box">
+                <div class="title">
+                    <img src="../static/images/sport.jpg" alt="s" height="40" width="40">
+                    community
+                </div>
+                <ul>
+                    <li>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist1.title}">123</a>
+                    </li>
+                    <li>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist2.title}">123</a>
+                    </li>
+                    <li>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist3.title}">123</a>
+                    </li>
+                    <li>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist4.title}">123</a>
+                    </li>
+                    <li>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist5.title}">123</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="comment_box">
+                <div class="title">
+                    <img src="../static/images/sport.jpg" alt="s" height="40" width="40">
+                    123
+                </div>
+                <ul>
+                    <li>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist1.title}">123</a>
+                    </li>
+                    <li>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist2.title}">123</a>
+                    </li>
+                    <li>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist3.title}">123</a>
+                    </li>
+                    <li>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist4.title}">123</a>
+                    </li>
+                    <li>
+                        <a href="../game-session/test1shuyuan" th:text="${postlist5.title}">123</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

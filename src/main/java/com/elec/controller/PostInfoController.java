@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -28,7 +29,7 @@ public class PostInfoController {
     @Resource
     private PostsSaveService postsSaveService;
     @RequestMapping("/post")
-    public String test2shuyuan(Model model){
+    public String test2shuyuan(@RequestParam String postId, Model model){
         PostInfo list1 = Result.succeed(this.postsSaveService.getPostList()).getData().get(0);
         model.addAttribute("postlist1",list1);
         PostInfo list2 = Result.succeed(this.postsSaveService.getPostList()).getData().get(1);
@@ -39,6 +40,11 @@ public class PostInfoController {
         model.addAttribute("postlist4",list4);
         PostInfo list5 = Result.succeed(this.postsSaveService.getPostList()).getData().get(4);
         model.addAttribute("postlist5",list5);
+        PostSaveDTO post = this.postsSaveService.queryPostInfoById(postId);
+        PostInfo thisPost = new PostInfo();
+        //thisPost.setTitle(post.getTitle());
+        thisPost.setContent("12333");
+        model.addAttribute("post1234",thisPost);
         return "post";
     }
 }

@@ -17,6 +17,9 @@ $(document).ready(function(){
     });
     $("#predict_number").bind('input propertychange',function(){
         var prize = $(this).val()*$(".item2").text();
-        $(".item3_win").text(prize);
+        $(".item3_win").text("you can win : "+prize);
     });
+    $(".window_button_2").click(function(){
+        alert("predicting success");
+    })
 });

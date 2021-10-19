@@ -11,6 +11,8 @@ import com.elec.service.GameSessionHandleService;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -54,7 +56,22 @@ public class GameSessionController {
         return "test";
     }
     @RequestMapping("/test1shuyuan")
-    public String test1shuyuan(){
-        return "post";
+    public String test1shuyuan(@RequestParam Long gameId, Model model)
+    {   Long score = Result.succeed(this.userSaveService.queryUserInfo("usernamelululu1wo")).getData().getCurrScores();
+        List<GameSession> listgs = Result.succeed(this.gameSessionHandleService.getGameList()).getData().subList(0,5);
+        model.addAttribute("gslist",listgs);
+        GameSession gs1 = Result.succeed(this.gameSessionHandleService.getDetail(gameId)).getData();
+        model.addAttribute("gameSession",gs1);
+        PostInfo list1 = Result.succeed(this.postsSaveService.getPostList()).getData().get(0);
+        model.addAttribute("postlist1",list1);
+        PostInfo list2 = Result.succeed(this.postsSaveService.getPostList()).getData().get(1);
+        model.addAttribute("postlist2",list2);
+        PostInfo list3 = Result.succeed(this.postsSaveService.getPostList()).getData().get(2);
+        model.addAttribute("postlist3",list3);
+        PostInfo list4 = Result.succeed(this.postsSaveService.getPostList()).getData().get(2);
+        model.addAttribute("postlist4",list4);
+        PostInfo list5 = Result.succeed(this.postsSaveService.getPostList()).getData().get(2);
+        model.addAttribute("postlist5",list5);
+        return "test";
     }
 }

@@ -66,7 +66,7 @@
                 <div class="table">
                     <ul>
                         <li th:each="gamelist:${gslist}">
-                            <a href="../game-session/test1shuyuan">
+                            <a  th:href="@{/game-session/test1shuyuan(gameId=${gamelist.gameId})}">
                                 <p th:text="${gamelist.league}">monday</p>
                                 <div class="team">
                                     <span class="name" th:text="${gamelist.home}">10-04</span>

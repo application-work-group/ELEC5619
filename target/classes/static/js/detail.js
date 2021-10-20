@@ -1,5 +1,8 @@
 
 $(document).ready(function(){
+
+    sessionStorage.setItem("isLogIn",true);
+    $(".empty").text(sessionStorage.getItem("isLogIn"))
     $(".team_a_button").click(function(){
         $(".item1").text($(this).find("i").text());
         $(".item2").text($(this).find("b").text());

@@ -1,12 +1,15 @@
-var sendData = {
-    userName: 'David',
-    gameType: 'FOOTBALL',
-    title: 'title123',
-    content: 'let me in ',
-    comment: 'let me out',
-}
+
 $(document).ready(function(){
     $(".release_button").click(function(){
+        var getTitle = $("#title_area").val();
+        var getContent = $("#reply_textarea").val();
+        var sendData = {
+            userName: 'qqq',
+            gameType: 'FOOTBALL',
+            title: getTitle,
+            content: getContent,
+            comment: 'let me out',
+        }
         $.ajax({
             url:'http://localhost:8080/save/post/savePost',
             data: JSON.stringify(sendData),

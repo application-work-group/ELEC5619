@@ -67,7 +67,7 @@
                 </section>
             </div>
             <div class="post_title">
-                <h1 th:text="${post1234.title}" class="h1_title">title</h1>
+                <h1 th:text="${postlist1.title}" class="h1_title">title</h1>
             </div>
             <div class="content_block">
                 <div class="content">
@@ -100,6 +100,13 @@
                 </div>
                 <div class="reply_container">
                     <a></a>
+                    <div class="title_new_post">title</div>
+                    <textarea id="title_area" cols="40"></textarea>
+                    <div class="gameType">game type:</div>
+                    <select name="gameType" id="gameType">
+                        <option value="football">Football</option>
+                        <option value="basketball">Basketball</option>
+                    </select>
                     <div class="reply_editor">
                         <div class="reply_editor_input">
                             <textarea name="reply_editor" id="reply_textarea" cols="80" rows="10"></textarea>

@@ -67,7 +67,7 @@
                 </section>
             </div>
             <div class="post_title">
-                <h1 th:text="${post1234.title}" class="h1_title">title</h1>
+                <h1 th:text="${postlist1.title}" class="h1_title">title</h1>
             </div>
             <div class="content_block">
                 <div class="content">
@@ -100,6 +100,13 @@
                 </div>
                 <div class="reply_container">
                     <a></a>
+                    <div class="title_new_post">title</div>
+                    <textarea id="title_area" cols="40"></textarea>
+                    <div class="gameType">game type:</div>
+                    <select name="gameType" id="gameType">
+                        <option value="football">Football</option>
+                        <option value="basketball">Basketball</option>
+                    </select>
                     <div class="reply_editor">
                         <div class="reply_editor_input">
                             <textarea name="reply_editor" id="reply_textarea" cols="80" rows="10"></textarea>
@@ -123,19 +130,19 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="../game-session/test1shuyuan" th:text="${postlist1.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist1.id})}" th:text="${postlist1.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan" th:text="${postlist2.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist2.id})}" th:text="${postlist2.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan" th:text="${postlist3.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist3.id})}" th:text="${postlist3.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan" th:text="${postlist4.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist4.id})}" th:text="${postlist4.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan" th:text="${postlist5.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist5.id})}" th:text="${postlist5.title}">123</a>
                     </li>
                 </ul>
             </div>
@@ -146,19 +153,19 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="../game-session/test1shuyuan" th:text="${postlist1.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist1.id})}" th:text="${postlist1.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan" th:text="${postlist2.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist2.id})}" th:text="${postlist2.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan" th:text="${postlist3.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist3.id})}" th:text="${postlist3.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan" th:text="${postlist4.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist4.id})}" th:text="${postlist4.title}">123</a>
                     </li>
                     <li>
-                        <a href="../game-session/test1shuyuan" th:text="${postlist5.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist5.id})}" th:text="${postlist5.title}">123</a>
                     </li>
                 </ul>
             </div>

@@ -41,7 +41,6 @@ public class PostInfoController {
         PostInfo list5 = Result.succeed(this.postsSaveService.getPostList()).getData().get(2);
         model.addAttribute("postlist5",list5);
         PostSaveDTO post = this.postsSaveService.queryPostInfoById(postId);
-
         model.addAttribute("post1234",post);
         return "post";
     }

@@ -1,9 +1,9 @@
 package com.elec.controller.webController;
 
+import com.elec.dto.ModifyWatchListDTO;
 import com.elec.dto.UserSaveDTO;
 import com.elec.dto.valueObj.Result;
 import com.elec.service.UserSaveService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -46,6 +46,11 @@ public class UserSaveController {
     /**
      * 获取关注用户列表
      */
+    @PostMapping("/updateWatchList")
+    public Result<?> updateWatchList(@RequestBody ModifyWatchListDTO modifyWatchListDTO){
+        return Result.succeed();
+    }
+
     /**
      * 修改用户密码
      * @param userName

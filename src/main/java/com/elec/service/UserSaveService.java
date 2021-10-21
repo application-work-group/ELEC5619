@@ -1,6 +1,7 @@
 package com.elec.service;
 
 import com.elec.dal.pojo.UserInfo;
+import com.elec.dto.ModifyWatchListDTO;
 import com.elec.dto.UserSaveDTO;
 
 public interface UserSaveService {
@@ -31,4 +32,11 @@ public interface UserSaveService {
      * @return
      */
     Boolean modifyPassword(String userName,String password);
+
+    /**
+     * 更新关注信息
+     * @param modifyWatchListDTO
+     * @return
+     */
+    Boolean modifyWatchList(ModifyWatchListDTO modifyWatchListDTO);
 }

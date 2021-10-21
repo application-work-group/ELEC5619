@@ -77,4 +77,14 @@ public class UserConvertor {
                 +":"+detail.getScores().getAway().toString());
         return gameSession;
     }
+    public static PostSaveDTO convert2PostSaveDTO(PostInfo postInfo){
+        PostSaveDTO postSaveDTO = new PostSaveDTO();
+        postSaveDTO.setPostId(postInfo.getPostId().toString());
+        postSaveDTO.setUserName(postInfo.getUserName());
+        postSaveDTO.setTitle(postInfo.getTitle());
+        postSaveDTO.setGameType(postInfo.getGameType());
+        postSaveDTO.setContent(postInfo.getContent());
+        postSaveDTO.setComment(postInfo.getComment());
+        return postSaveDTO;
+    }
 }

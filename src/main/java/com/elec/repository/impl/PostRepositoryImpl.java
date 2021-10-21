@@ -24,7 +24,10 @@ public class PostRepositoryImpl implements PostRepository {
 
     @Override
     public PostSaveDTO queryDetailById(String postId) {
-        return null;
+        final PostInfo one = this.iPostInfoService.getOne(new LambdaQueryWrapper<PostInfo>()
+                .eq(PostInfo::getPostId, postId));
+        PostSaveDTO postSaveDTO = UserConvertor.convert2PostSaveDTO(one);
+        return postSaveDTO;
     }
 
     @Override

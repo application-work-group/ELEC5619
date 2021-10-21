@@ -23,6 +23,13 @@ $(document).ready(function(){
         $(".item3_win").text("you can win : "+prize);
     });
     $(".window_button_2").click(function(){
-        alert("predicting success");
+        var sendData = {
+            paidScore: 123,
+            userName: "qqq",
+            userId: 1234455,
+            gameId: 1234555,
+            comment: 12444,
+            victoryOrDefeat: "true",
+        }
     })
 });

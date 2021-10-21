@@ -1,100 +1,16 @@
-王景林(王景林)
-你不是信誓旦旦？
-陈晗(陈晗)
-哎
-陈晗(陈晗)
-怕是手套都不准备来了
-徐首韬(徐首韬)
-？
-陈晗(陈晗)
-别的组要去outing了都
-王景林(王景林)
-谁
-陈晗(陈晗)
-everyone
-陈晗(陈晗)
-有去海南的 有去长沙的
-徐首韬(徐首韬)
-？
-王景林(王景林)
-scale 350 width
-王景林(王景林)
-@startuml
+
 'https://plantuml.com/state-diagram
-
-scale 350 width
-
-  [*] --> init
-  init: 成品稿
-  init --> Auditing
-  Auditing --> init
-  Auditing:分发审核中
-  Auditing --> Recall
-  Recall:撤回
-  Auditing --> Reject
-  Reject:驳回
-
-
-state Configuring {
-  [*] --> NewValueSelection
-  NewValueSelection --> NewValuePreview : EvNewValue
-  NewValuePreview --> NewValueSelection : EvNewValueRejected
-  NewValuePreview --> NewValueSelection : EvNewValueSaved
-
-  state NewValuePreview {
-     State1 -> State2
-  }
-
+@startuml
+package foo {
+    object baz
 }
-@enduml
-陈晗(陈晗)
-https://xhzy.yuque.com/search_platform/es_service/ual42i
-徐首韬(徐首韬)
-点外卖？
-王景林(王景林)
-你刚来就点外卖
-陈晗(陈晗)
-hotfix_esQ_20211020
-陈晗(陈晗)
-出去吃
-陈晗(陈晗)
-@Alex  看一下你的方案
-李文豪(Alex)
-💪奋斗中
-陈晗:
-@Alex  看一下你的方案
-@陈晗  我马上发语雀上
-李文豪(Alex)
-💪奋斗中
-https://xhzy.yuque.com/magic-iumn2/dlte0e/wvdods
-陈晗(陈晗)
-11:38
-@startuml
-'https://plantuml.com/state-diagram
 
-[*] --> Draft
-Draft : 草稿
+package bar {
+    map A {
+        b *-> foo.baz
+        c =>
+    }
+}
 
-Draft --> Organization
-Organization : 机构稿
-
-Organization --> Audit
-Audit : 送审
-
-Organization --> Edit
-Edit : 编辑
-
-Edit --> Audit
-Audit --> Reject
-Reject : 驳回
-
-Audit --> Cancle
-Cancle : 撤回
-
-Audit --> Pass
-Pass : 审核通过
-
-Pass --> [*]
-
-
+A::c --> foo
 @enduml

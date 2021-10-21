@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+scale 350 width
+
+  [*] --> init
+  init: 成品稿
+  init --> Auditing
+  Auditing --> init
+  Auditing:分发审核中
+  Auditing --> Recall
+  Recall:撤回
+  Auditing --> Reject
+  Recall-->init
+  Reject:驳回
+  Reject-->init
+  TimeDistribute:定时发布
+  Auditing-->TimeDistribute
+  Auditing-->Distributing
+  Resubmit:重新发布
+  Success:发布成功
+  Failed:发布失败
+  Distributing:分发中
+  Distributing-->Success
+  Distributing-->Failed
+  TimeDistribute-->Recall
+  Failed-->Resubmit
+  WithdrawSuccess:撤稿成功
+  WithdrawFailed:撤稿失败
+  Success-->WithdrawSuccess
+  Success-->WithdrawFailed
+  WithdrawSuccess-->init
+  Recall-->init
+  Resubmit-->Distributing
+  WithdrawFailed-->[*]
+
+}
+@enduml

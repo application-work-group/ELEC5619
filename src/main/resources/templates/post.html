@@ -37,20 +37,20 @@
             <div class="nav">
                 <div class="nav-ul">
                     <ul class="nav-item">
-                        <li>mainpage</li>
+                        <li>Homepage</li>
                         <li>|</li>
-                        <li>football</li>
+                        <li>Football</li>
                         <li>|</li>
-                        <li>basketball</li>
+                        <li>Basketball</li>
                     </ul>
                 </div>
             </div>
             <div class="subnav">
                 <div class="subnav-ul">
                     <ul class="nav-item">
-                        <li>1</li>
+                        <li>Community</li>
                         <li>|</li>
-                        <li>2</li>
+                        <li>Game</li>
                     </ul>
                 </div>
             </div>
@@ -63,24 +63,21 @@
                     <span>
                         <a href="../game-session/test1shuyuan">community</a>
                         <i> > </i>
+                        <a th:text="${post1234.gameType}"></a>
                     </span>
                 </section>
             </div>
             <div class="post_title">
-                <h1 th:text="${postlist1.title}" class="h1_title">title</h1>
+                <h1 th:text="${post1234.title}" class="h1_title">title</h1>
             </div>
             <div class="content_block">
                 <div class="content">
-                    <div class="post_user">
-
+                    <div class="post_user" th:text="'author: '+ ${post1234.userName}">
                     </div>
+                    <p> </p>
                     <div class="main-post">
                         <div class="detail">
-                            <div class="dom">
-                                <p></p>
-                                <p></p>
-                                <img src="../static/images/sport.jpg" alt="s">
-                                <p></p>
+                            <div class="dom" th:text="${post1234.content}">
                             </div>
                         </div>
                         <div class="button-list">
@@ -91,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sub-post">
+            <div class="sub-post" th:text="${post1234.comment}">
 
             </div>
             <div class="reply">

@@ -23,13 +23,31 @@ $(document).ready(function(){
         $(".item3_win").text("you can win : "+prize);
     });
     $(".window_button_2").click(function(){
+        var getGameId = $('.none_gameid').val();
         var sendData = {
-            paidScore: 123,
+            paidScore: 100,
             userName: "qqq",
-            userId: 1234455,
-            gameId: 1234555,
-            comment: 12444,
+            userId: 1020094254486841,
+            gameId: getGameId,
+            comment: 200,
             victoryOrDefeat: "true",
         }
+        $.ajax({
+           url:'http://localhost:8080/game/gameSession/',
+            data: JSON.stringify(sendData),
+            type: 'POST',
+            dataType: "json",
+            contentType: 'application/json;charset=UTF-8',
+            crossDomain: true,
+            success : function(data){
+                alert("success");
+            },
+            fail : function(){
+                alert("fail");
+            },
+            error : function(){
+                alert("error");
+            }
+        });
     })
 });

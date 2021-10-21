@@ -102,7 +102,7 @@
                         <div class="game_information" th:text="'game time: '+${gameSession.gameTime}+',league :'+${gameSession.league}"></div>
                     </div>
                     <div class="info">
-
+                        <p style="display:none" class="none_gameid" th:text="${gameSession.gameId}"></p>
                     </div>
                 </div>
             </div>
@@ -152,19 +152,19 @@
                 </div>
                 <ul>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist1.id})}" th:text="${postlist1.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist1.postId})}" th:text="${postlist1.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist2.id})}" th:text="${postlist2.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist2.postId})}" th:text="${postlist2.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist3.id})}" th:text="${postlist3.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist3.postId})}" th:text="${postlist3.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist4.id})}" th:text="${postlist4.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist4.postId})}" th:text="${postlist4.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist5.id})}" th:text="${postlist5.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist5.postId})}" th:text="${postlist5.title}">123</a>
                     </li>
                 </ul>
             </div>
@@ -175,19 +175,19 @@
                 </div>
                 <ul>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist1.id})}" th:text="${postlist1.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist1.postId})}" th:text="${postlist1.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist2.id})}" th:text="${postlist2.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist2.postId})}" th:text="${postlist2.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist3.id})}" th:text="${postlist3.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist3.postId})}" th:text="${postlist3.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist4.id})}" th:text="${postlist4.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist4.postId})}" th:text="${postlist4.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist5.id})}" th:text="${postlist5.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist5.postId})}" th:text="${postlist5.title}">123</a>
                     </li>
                 </ul>
             </div>

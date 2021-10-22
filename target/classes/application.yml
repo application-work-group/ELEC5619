@@ -3,7 +3,6 @@ spring:
   thymeleaf:
 
     cache: false
-
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://sh-cdb-kpiicv6q.sql.tencentcdb.com:59577/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai

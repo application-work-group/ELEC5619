@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/save/userInfo")
 public class UserSaveController {
     @Resource

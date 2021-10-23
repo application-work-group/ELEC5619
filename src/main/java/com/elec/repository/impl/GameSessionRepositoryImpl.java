@@ -2,6 +2,7 @@ package com.elec.repository.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.elec.component.GenerateId;
 import com.elec.convertor.UserConvertor;
 import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.OperationRecord;
@@ -62,6 +63,7 @@ public class GameSessionRepositoryImpl implements GameSessionRepository {
 
     @Override
     public boolean saveUserOperation(OperationRecord operationRecord) {
+        operationRecord.setOperationId(GenerateId.getGeneratID());
         return this.iOperationRecordService.save(operationRecord);
     }
 

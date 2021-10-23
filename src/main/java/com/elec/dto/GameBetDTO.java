@@ -12,6 +12,7 @@ public class GameBetDTO {
     /**
      * user choose
      * win or lose for the home team
+     * VICTORY/DRAW/DEFEAT
      */
     private String victoryOrDefeat;
 }

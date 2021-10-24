@@ -34,7 +34,7 @@ public class GameSessionController {
     @Resource
     private PostsSaveService postsSaveService;
 
-    @RequestMapping("/test0shuyuan")
+    @RequestMapping("/inigame")
     public String test0shuyuan(Model model){
         Long score = Result.succeed(this.userSaveService.queryUserInfo("usernamelululu1wo")).getData().getCurrScores();
         List<GameSession> listgs = Result.succeed(this.gameSessionHandleService.getGameList()).getData().subList(0,5);
@@ -53,9 +53,9 @@ public class GameSessionController {
         model.addAttribute("postlist4",list4);
         PostInfo list5 = Result.succeed(this.postsSaveService.getPostList()).getData().get(2);
         model.addAttribute("postlist5",list5);
-        return "test";
+        return "game";
     }
-    @RequestMapping("/test1shuyuan")
+    @RequestMapping("/gameDetail")
     public String test1shuyuan(@RequestParam Long gameId, Model model)
     {   Long score = Result.succeed(this.userSaveService.queryUserInfo("usernamelululu1wo")).getData().getCurrScores();
         List<GameSession> listgs = Result.succeed(this.gameSessionHandleService.getGameList()).getData().subList(0,5);
@@ -72,9 +72,9 @@ public class GameSessionController {
         model.addAttribute("postlist4",list4);
         PostInfo list5 = Result.succeed(this.postsSaveService.getPostList()).getData().get(2);
         model.addAttribute("postlist5",list5);
-        return "test";
+        return "game";
     }
-    @RequestMapping("/test3shuyuan")
+    @RequestMapping("/publish")
     public String test3shuyuan( Model model)
     {   Long score = Result.succeed(this.userSaveService.queryUserInfo("usernamelululu1wo")).getData().getCurrScores();
         GameSession gs = Result.succeed(this.gameSessionHandleService.getGameList()).getData().get(0);

@@ -1,16 +1,14 @@
 <template>
-        <v-app-bar
-      app
+      <v-app-bar
+        app
       dark
       src="https://i.pinimg.com/originals/a9/88/a4/a988a47e605cacc02b0bb41c85270de3.jpg"
     >
 
       <v-toolbar-title>
         Sport live
-      </v-toolbar-title>
-      
+      </v-toolbar-title> 
       <v-spacer></v-spacer>
-
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">      
           <v-btn icon 

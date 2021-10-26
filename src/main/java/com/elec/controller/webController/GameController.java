@@ -21,7 +21,12 @@ public class GameController {
     //Save user action (bet)
     @PostMapping("/saveUserOperation")
     public Result<?> saveUserOperation(@RequestBody GameBetDTO gameBetDTO){
-        return Result.succeed(this.gameSessionHandleService.saveUserOperation(gameBetDTO));
+        try {
+            return Result.succeed(this.gameSessionHandleService.saveUserOperation(gameBetDTO));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.succeed("fail");
+        }
     }
     //Updating user operations
     // TODO: 2021/10/16  

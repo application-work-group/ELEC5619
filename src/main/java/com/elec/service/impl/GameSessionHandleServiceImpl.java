@@ -158,15 +158,18 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
         }
         operationRecord.setOperationStatus(UserOperationEnums.QUIZ.name());
         operationRecord.setGameSession(gameInfo);
-        //
-        final UserInfo userInfo = this.userRepository.queryUserInfo(gameBetDTO.getUserName());
-        final long l = userInfo.getCurrScores() - gameBetDTO.getPaidScore();
-        if (l<0){
-            throw new Exception("积分不足");
-        }else {
-            userInfo.setCurrScores(l);
-        }
+        try {
+            final UserInfo userInfo = this.userRepository.queryUserInfo(gameBetDTO.getUserName());
+            final long l = userInfo.getCurrScores() - gameBetDTO.getPaidScore();
+            if (l<0){
+                throw new Exception("积分不足");
+            }else {
+                userInfo.setCurrScores(l);
+            }
         this.userRepository.updateUserInfo(userInfo);
+        }catch (Exception e){
+            return false;
+        }
         return this.gameSessionRepository.saveUserOperation(operationRecord);
     }
 

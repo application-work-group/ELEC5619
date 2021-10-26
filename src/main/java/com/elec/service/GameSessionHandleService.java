@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface GameSessionHandleService {
     /**
-     * 获取比赛详情信息
+     * Get more information about the competition
      * @param gameId
      * @return
      */

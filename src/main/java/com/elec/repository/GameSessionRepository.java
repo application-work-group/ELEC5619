@@ -9,14 +9,14 @@ import java.util.List;
 
 public interface GameSessionRepository {
     /**
-     * 根据id获取比赛详情信息
+     * Get match details by ID
      * @param gameId
      * @return
      */
     GameSession getDetailById (Long gameId);
 
     /**
-     * 保存比赛信息
+     * Save game info
      * @param details
      * @return
      */

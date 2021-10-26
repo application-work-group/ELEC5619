@@ -110,7 +110,7 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
     @Override
     public List<GameSession> getGameList() {
         List<GameSession> list =  this.gameSessionRepository.getPostList();//这个list就是数据源
-        int listNum = 20;
+        int listNum = 200;
         int returnNum = list.size();
         //如果listNum大于数据源list，直接返回list数据源全部数据
         if(listNum < list.size()) {

@@ -6,6 +6,7 @@ import com.elec.api.HttpRequestA;
 import com.elec.component.DateGetComponent;
 import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.OperationRecord;
+import com.elec.dal.pojo.UserInfo;
 import com.elec.dto.GameBetDTO;
 import com.elec.dto.UpdateGameDetailDTO;
 import com.elec.dto.valueObj.basketball.BasketDetail;
@@ -16,6 +17,7 @@ import com.elec.dto.valueObj.football.FootballResult;
 import com.elec.enums.GameVictoryOrDefeatEnums;
 import com.elec.enums.UserOperationEnums;
 import com.elec.repository.GameSessionRepository;
+import com.elec.repository.UserRepository;
 import com.elec.service.GameSessionHandleService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
@@ -31,6 +33,9 @@ import java.util.List;
 public class GameSessionHandleServiceImpl implements GameSessionHandleService {
     @Resource
     private GameSessionRepository gameSessionRepository;
+
+    @Resource
+    private UserRepository userRepository;
     private final String date = DateGetComponent.getCurrentDate();
 
     private final HttpHeaders headers = new HttpHeaders();
@@ -125,7 +130,7 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
     }
 
     @Override
-    public boolean saveUserOperation(GameBetDTO gameBetDTO) {
+    public boolean saveUserOperation(GameBetDTO gameBetDTO) throws Exception {
         GameSession gameSession = this.getDetail(gameBetDTO.getGameId());
         String oddsInformation = gameSession.getOddsInformation();
         JSONArray jsonArray = JSONObject.parseArray(oddsInformation);
@@ -153,6 +158,15 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
         }
         operationRecord.setOperationStatus(UserOperationEnums.QUIZ.name());
         operationRecord.setGameSession(gameInfo);
+        //
+        final UserInfo userInfo = this.userRepository.queryUserInfo(gameBetDTO.getUserName());
+        final long l = userInfo.getCurrScores() - gameBetDTO.getPaidScore();
+        if (l<0){
+            throw new Exception("积分不足");
+        }else {
+            userInfo.setCurrScores(l);
+        }
+        this.userRepository.updateUserInfo(userInfo);
         return this.gameSessionRepository.saveUserOperation(operationRecord);
     }
 

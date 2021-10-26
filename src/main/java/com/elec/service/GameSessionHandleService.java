@@ -36,7 +36,7 @@ public interface GameSessionHandleService {
      * @param gameBetDTO
      * @return
      */
-    boolean saveUserOperation(GameBetDTO gameBetDTO);
+    boolean saveUserOperation(GameBetDTO gameBetDTO) throws Exception;
 
     /**
      * update the detail of the game result

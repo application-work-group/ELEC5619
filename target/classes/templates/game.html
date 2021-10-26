@@ -18,9 +18,9 @@
                         <a href="http://localhost:8080/game-session/test1shuyuan">homepage</a>
                     </li>
                     <li class="line">|</li>
-                    <li>football</li>
-                    <li class="line">|</li>
-                    <li class="empty"></li>
+                    <li>
+                        <a href="http://localhost:8080/user/test0shuyuan">personal center</a>
+                    </li>
                 </ul>
             </div>
             <div class="topbarNav-right">
@@ -139,6 +139,23 @@
                     <span class="team_b_button">
                         <i th:text="${gameSession.away}">team2</i>
                         <b>1.00</b>
+                    </span>
+                </div>
+            </div>
+            <div class="predict_box">
+                <div class="predict_title">
+                    <i class="predict_key">prediction</i>
+                    <div class="title_name">the First-half winner is</div>
+                </div>
+                <div class="predict_list">
+                    <span class="team_a_button">
+                        <i th:text="${gameSession.home}">team1</i>
+                        <b>1.00</b>
+                    </span>
+
+                    <span class="team_b_button">
+                        <i th:text="${gameSession.away}">team2</i>
+                        <b>2.00</b>
                     </span>
                 </div>
             </div>

@@ -61,17 +61,17 @@ public class SportsTest extends BaseTest {
         final List<GameSession> gameList = this.gameSessionHandleService.getGameList();
         System.out.println(JSONObject.toJSONString(gameList));
     }
-    @Test
-    public void test21312312(){
-        String sss = "{\n" +
-                "                paidScore: 100,\n" +
-                "                userName: \"qqq\",\n" +
-                "                userId: 1020094254486841,\n" +
-                "                gameId: 1018080618093594,\n" +
-                "                comment: \"200\",\n" +
-                "                victoryOrDefeat: \"VICTORY\",\n" +
-                "            }";
-        final GameBetDTO gameBetDTO = JSONObject.parseObject(sss, GameBetDTO.class);
-        this.gameSessionHandleService.saveUserOperation(gameBetDTO);
-    }
+//    @Test
+//    public void test21312312(){
+//        String sss = "{\n" +
+//                "                paidScore: 100,\n" +
+//                "                userName: \"qqq\",\n" +
+//                "                userId: 1020094254486841,\n" +
+//                "                gameId: 1018080618093594,\n" +
+//                "                comment: \"200\",\n" +
+//                "                victoryOrDefeat: \"VICTORY\",\n" +
+//                "            }";
+//        final GameBetDTO gameBetDTO = JSONObject.parseObject(sss, GameBetDTO.class);
+//        this.gameSessionHandleService.saveUserOperation(gameBetDTO);
+//    }
 }

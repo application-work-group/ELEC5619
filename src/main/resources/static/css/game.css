@@ -201,16 +201,19 @@ ul{
 .table_list_c .table ul li .vs{
     text-align: center;
     line-height: 14px;
+    height: 14px;
 }
 .team_b{
     float:right;
     height:100px;
     margin-right:20px;
+    width: 15%;
 }
 .team_a{
     float:left;
     height:100px;
     margin-left:20px;
+    width: 15%;
 }
 
 .predict_box{
@@ -390,4 +393,12 @@ a{
 
 .game_information{
     text-align: center;
+}
+
+.team_vs_box .vs{
+    text-align: center;
+    height: 100px;
+    line-height:100px;
+    float: left;
+    width:60%;
 }

@@ -11,9 +11,13 @@
           text-color="#fff"
           active-text-color="#ffd04b">
         <el-menu-item index="1">Login</el-menu-item>
+        <el-menu-item index="3">Home</el-menu-item>
+        <el-menu-item index="4">FOOTBALL</el-menu-item>
+        <el-menu-item index="5">BASKETBALL</el-menu-item>
         <el-menu-item index="2" :disabled=!isLogin>Personal Center</el-menu-item>
       </el-menu>
       <router-view></router-view>
+      <app-footer></app-footer>
     </div>
   </div>
 
@@ -25,24 +29,23 @@
 // import loginAndRegister from "@/components/login-and-register"
 // import profile from "@/components/profile";
 // import axios from "axios";
+import AppFooter from "@/components/appFooter";
 export default {
   name: 'App',
   data() {
     return {
-       // activeIndex: '1',
+      // activeIndex: '1',
 
     }
   },
-  components: {
-
-  },
-  computed:{
-    isLogin(){
+  components: {AppFooter},
+  computed: {
+    isLogin() {
       return this.$store.state.isLogin
     },
     //设置login后导航栏随之变化
-    activeIndex:{
-      get:function (){
+    activeIndex: {
+      get: function () {
         console.log(this.$route.path)
         const path = this.$route.path.split('/')
         let index = ''
@@ -56,19 +59,18 @@ export default {
         }
         return index
       },
-      set:function (){
+      set: function () {
 
       }
     },
   },
-  watch:{
-  },
+  watch: {},
   created() {
-    if(sessionStorage.getItem('isLogin') == "true"){
+    if (sessionStorage.getItem('isLogin') == "true") {
       console.log("mounted is true")
-      this.$store.commit('login',true)
-    }else {
-      this.$store.commit('login',false)
+      this.$store.commit('login', true)
+    } else {
+      this.$store.commit('login', false)
     }
   },
   methods: {
@@ -95,6 +97,22 @@ export default {
             name: 'profile'
           })
           break;
+        case "3":
+          this.$router.push({
+            name: 'home'
+          })
+          break;
+        case "4":
+          this.$router.push({
+            name: 'football'
+          })
+          break;
+        case "5":
+          this.$router.push({
+            name: 'basketball'
+          })
+          break;
+
       }
     }
   },

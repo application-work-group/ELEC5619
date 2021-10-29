@@ -8,17 +8,22 @@
         <button type="button" class="toggle-button" @click="switchToRegister">Register</button>
       </div>
       <!--登陆-->
-      <form class="input-group" v-show="isLoginPage">
+      <form class="input-group" v-show="isLoginPage" >
         <input type="text" class="input-field" placeholder="User Id" v-model="loginInfo.Id">
-        <input type="password" class="input-field" placeholder="Enter password" v-model="loginInfo.password">
+        <input :type="loginPasswordType" class="input-field" placeholder="Enter password" v-model="loginInfo.password">
+        <el-checkbox v-model="showLoginPassword" style="position: relative;left: -75px;margin-bottom: 10px;margin-top: 10px">Show password</el-checkbox>
         <button  type = "button" class="submit-btn" @click="login">Log in</button>
         <!--注册-->
       </form>
       <form class="input-group" v-show="!isLoginPage">
         <input type="text" class="input-field" placeholder="User Id" v-model="registerInfo.userName">
         <input type="text" class="input-field" placeholder="User email" v-model="registerInfo.email">
-        <input type="text" class="input-field" placeholder="phone number" v-model="registerInfo.phoneNumber">
-        <input type="password" class="input-field" placeholder="Enter password" v-model="registerInfo.password">
+        <input type="text" class="input-field" placeholder="phone number"
+               v-model="registerInfo.phoneNumber">
+        <input :type="registerPasswordType" class="input-field" placeholder="Password"
+               v-model="registerInfo.password">
+        <el-checkbox v-model="showRegisterPassword" style="position: relative;left: -75px;margin-bottom: 10px;
+        margin-top: 10px" >Show password</el-checkbox>
         <button  type = "button" class="submit-btn" @click="register">Register</button>
 
       </form>
@@ -43,55 +48,65 @@ export default {
       },
       isLoginPage: true,
       left: 0,
+      showLoginPassword: false,
+      showRegisterPassword:false,
+    }
+  },
+  computed:{
+    loginPasswordType(){
+      if(this.showLoginPassword){
+        return "text"
+      }else {
+        return "password"
+      }
+    },
+    registerPasswordType() {
+      if(this.showRegisterPassword){
+        return "text"
+      }else {
+        return "password"
+      }
     }
   },
   methods: {
     register() {
-      //简单判断信息是否为空
-      if (this.registerInfo.password.trim() === '') {
-        alert('no password')
+      //userName
+      if (!/^\w{3,12}$/.test(this.registerInfo.userName.trim())) {
+        alert('userName form is incorrect, it needs to be between 3 ' +
+            'and 12 in length and must consist of letters, numbers and underscores')
         return;
       }
-      if (this.registerInfo.userName.trim() === '') {
-        alert('no userID')
+      //email
+      if (!/[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+/.test(this.registerInfo.email.trim())) {
+        alert('Incorrect email format')
         return;
       }
-      if (this.registerInfo.email.trim() === '') {
-        alert('no email')
+      //phone number
+      if (!/^(?:\+?61|0)4 ?(?:(?:[01] ?[0-9]|2 ?[0-57-9]|3 ?[1-9]|4 ?[7-9]|5 ?[018]) ?[0-9]|3 ?0 ?[0-5])(?: ?[0-9]){5}$/.test(
+          this.registerInfo.phoneNumber.trim())) {
+        alert('Incorrect mobile phone format')
         return;
       }
-      if (this.registerInfo.phoneNumber.trim() === '') {
-        alert('no phone')
+      //password
+      if (!/^\w{6,12}$/.test(this.registerInfo.password.trim())) {
+        alert('password form is incorrect, it needs to be between 6 ' +
+            'and 12 in length and must consist of letters, numbers and underscores')
         return;
       }
-      //提交注册信息
-      // this.axios({
-      //   url:"http://localhost:8080/save/userInfo/saveUserInfo",
-      //   method:"post",
-      //   data:{
-      //     userName: 'aaa',
-      //     email: 'bbb',
-      //     password: 'ccc',
-      //     phoneNumber: 'ddd',
-      //   },
-      //   headers: {
-      //     'Content-Type':'application/json'
-      //   }
-      // })
-      this.axios.post('http://localhost:8080/save/userInfo/saveUserInfo', this.registerInfo
+      this.axios.post(
+          'http://localhost:8080/save/userInfo/saveUserInfo',
+          this.registerInfo
       ).then(res => {
         console.log('res=>', res);
-      }).catch((error) => {
-        console.log('error=>', error)
+        if(res.data.data === false){
+          alert('This ID has already been registered')
+        }else{
+          alert('Register success')
+        }
       })
-      alert('success')
     },
     login() {
       if (this.loginInfo.Id.trim() === '') {
-        alert('no password')
-        return;
-      }
-      if (this.loginInfo.password.trim() === '') {
         alert('no userID')
         return;
       }
@@ -188,14 +203,14 @@ export default {
 
 .toggle-button {
   padding: 10px 30px;
-  cursor: pointer; /*不知道*/
-  background: transparent; /*不知道*/
+  cursor: pointer;
+  background: transparent;
   border: 0;
   outline: none;
   position: relative;
 }
 
-#btn { /*用来填充颜色的，不会覆盖住底下的内容，而是一起显示*/
+#btn { /*用来填充颜色的*/
   top: 0;
   left: 0px;
   position: absolute;
@@ -235,5 +250,10 @@ export default {
   border: 0;
   outline: none;
   border-radius: 30px;
+  background-color: #d5d5d5;
+}
+
+button{
+  font-size: 13.3px;
 }
 </style>

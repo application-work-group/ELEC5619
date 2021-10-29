@@ -2,23 +2,23 @@
   <div class="aside">
     <div class="asideBox">
       <div class="asideBoxContent" style="border-right: 1px solid #bdbdbd">    <!--可以优化成一个slot-->
-        <div>Following</div>
-        <div>0</div>
+        <div>Post</div>
+        <div>{{postNumber}}</div>
       </div>
       <div class="asideBoxContent">
-        <div>Followed</div>
-        <div>0</div>
+        <div>Following</div>
+        <div>{{following}}</div>
       </div>
     </div>
 
     <div class="asideBox">
       <div class="asideBoxContent" style="border-right: 1px solid #bdbdbd">
-        <div>Point</div>
-        <div>100</div>
+        <div>Points</div>
+        <div>{{score}}</div>
       </div>
       <div class="asideBoxContent">
-        <div>Recommended</div>
-        <div>0</div>
+        <div>Points Ranking</div>
+        <div>{{ranking}}</div>
       </div>
 
     </div>
@@ -33,12 +33,20 @@ export default {
   name: "profile-aside",
   data() {
     return {
-
+      score: 0,
+      postNumber:0,
+      following:2,
+      ranking:3
     }
   },
   components: {
     profileAsideChannel
+  },
+  mounted() {
+    this.$bus.$on('sendScore',(data)=>{this.score = data})
+    this.$bus.$on('sendPost',(data)=>{this.postNumber = data})
   }
+
 }
 </script>
 

@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import VueRouter from "vue-router";
 import router from "./router"
 import store from './store/index'
+import vuetify from './plugins/vuetify'
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.use(VueRouter);
@@ -13,5 +14,10 @@ Vue.use(VueRouter);
 new Vue({
   render: h => h(App),
   router,
-  store
+  store,
+  vuetify,
+
+  beforeCreate(){
+    Vue.prototype.$bus = this     //安装全局事件总线
+  }
 }).$mount('#app')

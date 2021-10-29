@@ -1,6 +1,7 @@
 <template>
   <div>
     <el-table @row-click="handleClick"
+              height="400"
         :data="content"
         style="width: 100%">
       <el-table-column width="30"></el-table-column>

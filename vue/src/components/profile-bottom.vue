@@ -23,6 +23,7 @@ export default {
 <style scoped>
 .bottom {
   height: 764px;
+  width: 2000px;
   margin-top: 20px;
   background-color: #EBEEF5;
   text-align: left;

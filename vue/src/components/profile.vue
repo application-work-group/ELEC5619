@@ -21,7 +21,7 @@ export default {
 <style scoped>
 .container {
   position: relative;
-  width: 1250px;
+  width: 1255px;
   /*position: absolute;*/
   left: 50%;
   margin-left: -625px;

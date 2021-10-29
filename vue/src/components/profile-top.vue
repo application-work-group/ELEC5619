@@ -2,13 +2,13 @@
   <div class = "top">
     <el-row>
       <el-col :span="3"><div class="grid-content bg-purple">
-        <img src="@/assets/profile.jpg">
+        <img src="@/static/images/profile.jpg">
 
       </div></el-col>
       <el-col :span="21"><div class="grid-content bg-purple-light">
-          <h3> 用户名：{{ userName }} </h3>
+          <h3> User Name：{{ userName }} </h3>
         <el-button type="danger" round style="justify-content: end" @click = "logout">Logout</el-button>
-          <div class = "otherInformation"> 其他个人信息, 比如等级，签名 </div>
+          <div class = "otherInformation"> I Love Football! </div>
       </div></el-col>
     </el-row>
   </div>
@@ -28,6 +28,7 @@ export default {
       sessionStorage.clear()
       this.$store.commit('userNameChange','')
       this.$store.commit('login',false)
+      this.$store.commit('userID','')
       this.$router.push({
         name: 'login'
       })

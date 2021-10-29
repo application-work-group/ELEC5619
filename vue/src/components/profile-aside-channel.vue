@@ -3,7 +3,7 @@
     <div class="channel">
       <div class="headTitle">
         <div class="headContent">
-          Channels I follow
+          Channels
         </div>
       </div>
       <!--      <ul>-->

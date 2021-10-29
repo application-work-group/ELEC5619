@@ -27,7 +27,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    @RequestMapping("/test0shuyuan")
+    @RequestMapping("/user")
     public String testenhua(){
         return "index";
     }
@@ -35,7 +35,6 @@ public class UserController {
 
 @Configuration
 class MvcConfigure implements WebMvcConfigurer {
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/user/**").addResourceLocations("classpath:/user/");

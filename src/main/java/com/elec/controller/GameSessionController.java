@@ -72,6 +72,7 @@ public class GameSessionController {
         model.addAttribute("postlist4",list4);
         PostInfo list5 = Result.succeed(this.postsSaveService.getPostList()).getData().get(2);
         model.addAttribute("postlist5",list5);
+        model.addAttribute("length",gs1.getOddsInformation().split(",").length-1);
         return "game";
     }
     @RequestMapping("/publish")

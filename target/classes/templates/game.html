@@ -15,7 +15,7 @@
             <div class="topbarNav-left">
                 <ul class="quickNav">
                     <li class="homepage">
-                        <a href="http://localhost:8080/game-session/test1shuyuan">homepage</a>
+                        <a href="http://localhost:8080/user/user#/home">homepage</a>
                     </li>
                     <li class="line">|</li>
                     <li>
@@ -65,14 +65,14 @@
                 <div class="table">
                     <ul>
                         <li th:each="gamelist:${gslist}">
-                            <a  th:href="@{/game-session/test1shuyuan(gameId=${gamelist.gameId})}">
+                            <a  th:href="@{/game-session/gameDetail(gameId=${gamelist.gameId})}">
                                 <p th:text="${gamelist.league}">monday</p>
                                 <div class="team">
-                                    <span class="name" th:text="${gamelist.home}">10-04</span>
+                                    <span class="name" th:text="${gamelist.away}">10-04</span>
                                 </div>
-                                <div class="vs">vs</div>
+                                <div class="vs"  th:if="${gameSession.gameResult} ne 'away:home'" th:text="${gameSession.gameResult}">vs</div>
                                 <div class="team2">
-                                    <span class="name" th:text="${gamelist.away}">1 game</span>
+                                    <span class="name" th:text="${gamelist.home}">1 game</span>
                                 </div>
                             </a>
                         </li>
@@ -85,18 +85,19 @@
             <div class="game_box">
                 <div class="team_vs">
                     <div class="team_vs_box">
-                        <div class="game_information" th:text="'game time: '+${gameSession.gameTime}+',league :'+${gameSession.league}"></div>
+                        <div class="game_information" th:text="'game time: '+${gameSession.gameTime}+'     League :'+${gameSession.league}"></div>
                         <div class="team_a">
                             <div class="message">
                                 <h2>&nbsp;</h2>
-                                <p th:text="${gameSession.home}">team_a name</p>
+                                <p th:text="${gameSession.away}">team_a name</p>
                                 <div></div>
                             </div>
                         </div>
+                        <div class="vs"  th:if="${gameSession.gameResult} ne 'away:home'" th:text="${gameSession.gameResult}">vs</div>
                         <div class="team_b">
                             <div class="message">
                                 <h2>&nbsp;</h2>
-                                <p th:text="${gameSession.away}">team_b name</p>
+                                <p th:text="${gameSession.home}">team_b name</p>
                                 <div></div>
                             </div>
                         </div>
@@ -115,13 +116,12 @@
                 </div>
                 <div class="predict_list">
                     <span class="team_a_button">
-                        <i th:text="${gameSession.home}">team1</i>
-                        <b>1.00</b>
+                        <i th:text="${gameSession.away}">team1</i>
+                        <b th:if="${gameSession.gameResult} == 'away:home'" th:text="${#strings.substringAfter(#strings.arraySplit(gameSession.oddsInformation,',')[0],'[')}">1.00</b>
                     </span>
-
                     <span class="team_b_button">
-                        <i th:text="${gameSession.away}">team2</i>
-                        <b>2.00</b>
+                        <i th:text="${gameSession.home}">team2</i>
+                         <b th:if="${gameSession.gameResult} == 'away:home'" th:text="${#strings.substringBefore(#strings.arraySplit(gameSession.oddsInformation,',')[length],']')}">1.00</b>
                     </span>
                 </div>
             </div>

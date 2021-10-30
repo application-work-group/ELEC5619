@@ -44,4 +44,10 @@ public interface GameSessionHandleService {
      * @return
      */
     boolean updateGameDetail(UpdateGameDetailDTO updateGameDetailDTO);
+
+    /**
+     * 保存USsport
+     * @return
+     */
+    boolean saveUSGameDetail();
 }

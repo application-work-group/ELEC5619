@@ -2,6 +2,7 @@ package com.elec.repository;
 
 import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.OperationRecord;
+import com.elec.dto.valueObj.US_Sports_Detail;
 import com.elec.dto.valueObj.basketball.BasketDetail;
 import com.elec.dto.valueObj.football.FootballDetail;
 
@@ -49,4 +50,6 @@ public interface GameSessionRepository {
      * @return
      */
     boolean updateGameDetail(List<GameSession> gameSession);
+
+    boolean save_US_Sports_Detail(List<US_Sports_Detail> details);
 }

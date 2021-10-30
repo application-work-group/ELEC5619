@@ -8,6 +8,7 @@ import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.OperationRecord;
 import com.elec.dal.service.IGameSessionService;
 import com.elec.dal.service.IOperationRecordService;
+import com.elec.dto.valueObj.US_Sports_Detail;
 import com.elec.dto.valueObj.basketball.BasketDetail;
 import com.elec.dto.valueObj.football.FootballDetail;
 import com.elec.repository.GameSessionRepository;
@@ -79,4 +80,14 @@ public class GameSessionRepositoryImpl implements GameSessionRepository {
         });
         return true;
     }
+    @Override
+    public boolean save_US_Sports_Detail(List<US_Sports_Detail> details) {
+        List<GameSession> gameSessions = new ArrayList<>();
+        details.forEach(detail->{
+            GameSession gameSession = UserConvertor.convert2USGameSession(detail);
+            gameSessions.add(gameSession);
+        });
+        return this.iGameSessionService.saveBatch(gameSessions);
+    }
+
 }

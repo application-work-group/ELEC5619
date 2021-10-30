@@ -9,6 +9,8 @@ import com.elec.dal.pojo.OperationRecord;
 import com.elec.dal.pojo.UserInfo;
 import com.elec.dto.GameBetDTO;
 import com.elec.dto.UpdateGameDetailDTO;
+import com.elec.dto.valueObj.Result_V2;
+import com.elec.dto.valueObj.US_Sports_Detail;
 import com.elec.dto.valueObj.basketball.BasketDetail;
 import com.elec.dto.valueObj.basketball.BasketballResult;
 import com.elec.dto.valueObj.football.FirstLevel;
@@ -199,4 +201,25 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
         this.gameSessionRepository.updateGameDetail(gameSessions);
         return true;
     }
+
+    @Override
+    public boolean saveUSGameDetail() {
+        String uri = "https://sportspage-feeds.p.rapidapi.com/games?status=final";
+//        String uri = "https://sportspage-feeds.p.rapidapi.com/games?status=final&date=2021-10-25";
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("x-rapidapi-host","sportspage-feeds.p.rapidapi.com");
+        headers.add("x-rapidapi-key","0d7c45fae2mshfd5683b00238dcfp1c6861jsn8be58dce0cff");
+        ResponseEntity<String> result = HttpRequestA.getResult(headers, uri);
+        Result_V2<?> result1 = JSONObject.parseObject(result.getBody(),Result_V2.class);
+        if (null!=result1){
+            final Object data = result1.getResults();
+            JSONArray array = JSONObject.parseArray(JSONObject.toJSONString(data));
+            List<US_Sports_Detail> list = array.toJavaList(US_Sports_Detail.class);
+            this.gameSessionRepository.save_US_Sports_Detail(list);
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 }

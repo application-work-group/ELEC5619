@@ -50,4 +50,9 @@ public class GameController {
     public Result<?> saveBasketballDetail(){
         return Result.succeed(this.gameSessionHandleService.saveBasketballDetail());
     }
+    @PostMapping
+    public Result<?> save_US_Games_Detail(){
+        return Result.succeed(this.gameSessionHandleService.saveUSGameDetail());
+    }
+
 }

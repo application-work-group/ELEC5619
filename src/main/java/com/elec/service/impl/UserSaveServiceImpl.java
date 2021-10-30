@@ -39,15 +39,15 @@ public class UserSaveServiceImpl implements UserSaveService {
     }
 
     @Override
-    public Boolean userLogin(UserSaveDTO userSaveDTO) {
+    public Long userLogin(UserSaveDTO userSaveDTO) {
         String password = MD5Utils.stringToMD5(userSaveDTO.getPassword());
         userSaveDTO.setPassword(password);
         return this.userRepository.userLogin(userSaveDTO);
     }
 
     @Override
-    public UserInfo queryUserInfo(String userName) {
-        UserInfo userInfo = userRepository.queryUserInfo(userName);
+    public UserInfo queryUserInfo(String userId) {
+        UserInfo userInfo = userRepository.queryUserInfo(userId);
         return userInfo;
     }
 

@@ -1,5 +1,6 @@
 package com.elec.controller.webController;
 
+import com.alibaba.fastjson.JSONObject;
 import com.elec.dto.ModifyWatchListDTO;
 import com.elec.dto.UserSaveDTO;
 import com.elec.dto.valueObj.Result;
@@ -22,7 +23,9 @@ public class UserSaveController {
      */
     @PostMapping("/saveUserInfo")
     public Result<?> saveUserInfo(@RequestBody UserSaveDTO userSaveDTO){
-        return Result.succeed(this.userSaveService.saveUserInfo(userSaveDTO));
+        JSONObject object = new JSONObject();
+        object.fluentPut("userId",this.userSaveService.saveUserInfo(userSaveDTO));
+        return Result.succeed(object);
     }
 
     /**
@@ -37,12 +40,12 @@ public class UserSaveController {
 
     /**
      * 获取用户信息详情（积分、帖子等）
-     * @param userName
+     * @param userId
      * @return
      */
     @GetMapping("/queryUserInfo")
-    public Result<?> queryUserInfo(@RequestParam(value = "userName") String userName){
-        return Result.succeed(this.userSaveService.queryUserInfo(userName));
+    public Result<?> queryUserInfo(@RequestParam(value = "userId") String userId){
+        return Result.succeed(this.userSaveService.queryUserInfo(userId));
     }
     /**
      * 获取关注用户列表

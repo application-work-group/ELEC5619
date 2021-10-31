@@ -5,10 +5,11 @@ import com.elec.dal.pojo.GameSession;
 import com.elec.dal.pojo.PostInfo;
 import com.elec.dal.pojo.User;
 import com.elec.dal.pojo.UserInfo;
-import com.elec.dto.valueObj.basketball.BasketDetail;
-import com.elec.dto.valueObj.football.FootballDetail;
 import com.elec.dto.PostSaveDTO;
 import com.elec.dto.UserSaveDTO;
+import com.elec.dto.valueObj.US_Sports_Detail;
+import com.elec.dto.valueObj.basketball.BasketDetail;
+import com.elec.dto.valueObj.football.FootballDetail;
 import com.elec.enums.GameTypeEnums;
 
 import java.util.Date;
@@ -87,4 +88,25 @@ public class UserConvertor {
         postSaveDTO.setComment(postInfo.getComment());
         return postSaveDTO;
     }
+
+    public static GameSession convert2USGameSession(US_Sports_Detail gameDetail){
+        try{
+            GameSession gameSession = new GameSession();
+            gameSession.setGameId(GenerateId.getGeneratID());
+            gameSession.setGameType(GameTypeEnums.US_SPORTS.name());
+            gameSession.setGameTime(gameDetail.getSchedule().getDate());
+            gameSession.setGmtCreate(gameDetail.getOdds().get(0).getOpenDate());
+            gameSession.setGmtModified(gameDetail.getLastUpdated());
+            gameSession.setHome(gameDetail.getTeams().getHome().getTeam());
+            gameSession.setAway(gameDetail.getTeams().getAway().getTeam());
+            gameSession.setLeague(gameDetail.getDetails().getLeague());
+            gameSession.setOddsInformation(gameDetail.getOdds().get(0).getSpread().getOpen().getAway() + " : " + gameDetail.getOdds().get(0).getSpread().getOpen().getHome());
+            gameSession.setGameResult(gameDetail.getScoreboard().getScore().getAway() + " : " + gameDetail.getScoreboard().getScore().getHome());
+            return gameSession;
+        } catch (NullPointerException e) {
+            System.out.println("Wait for today's competition data!");
+            return null;
+        }
+    }
+
 }

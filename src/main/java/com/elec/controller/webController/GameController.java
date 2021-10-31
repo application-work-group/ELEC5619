@@ -46,8 +46,13 @@ public class GameController {
         return Result.succeed(this.gameSessionHandleService.updateGameDetail(updateGameDetailDTO));
     }
     //Save the basketball
-    @PostMapping
+    @PostMapping("/saveBasketballDetail")
     public Result<?> saveBasketballDetail(){
         return Result.succeed(this.gameSessionHandleService.saveBasketballDetail());
     }
+    @PostMapping("/saveUSGamesDetail")
+    public Result<?> save_US_Games_Detail(){
+        return Result.succeed(this.gameSessionHandleService.saveUSGameDetail());
+    }
+
 }

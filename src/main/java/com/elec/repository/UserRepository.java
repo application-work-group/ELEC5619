@@ -32,14 +32,14 @@ public interface UserRepository {
      * @param userSaveDTO
      * @return
      */
-    boolean userLogin(UserSaveDTO userSaveDTO);
+    Long userLogin(UserSaveDTO userSaveDTO);
 
     /**
      * 获取用户详情
-     * @param userName
+     * @param userId
      * @return
      */
-    UserInfo queryUserInfo(String userName);
+    UserInfo queryUserInfo(String userId);
 
     /**
      * 获取所有用户积分信息

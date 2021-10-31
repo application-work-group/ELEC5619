@@ -41,20 +41,20 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean userLogin(UserSaveDTO userSaveDTO) {
+    public Long userLogin(UserSaveDTO userSaveDTO) {
         User user = iUserService.getOne(new LambdaQueryWrapper<User>()
                 .eq(User::getUserName,userSaveDTO.getUserName()));
         if (null == user){
-            return false;
+            return null;
         }else if (!user.getPassword().equals(userSaveDTO.getPassword())){
-            return false;
-        }else return true;
+            return null;
+        }else return user.getUserId();
     }
 
     @Override
-    public UserInfo queryUserInfo(String userName) {
+    public UserInfo queryUserInfo(String userId) {
         UserInfo userInfo = userInfoService.getOne(new LambdaQueryWrapper<UserInfo>()
-                .eq(UserInfo::getUserName,userName));
+                .eq(UserInfo::getUserId,userId));
         return userInfo;
     }
 

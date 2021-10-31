@@ -17,14 +17,14 @@ public interface UserSaveService {
      * @param userSaveDTO
      * @return
      */
-    Boolean userLogin(UserSaveDTO userSaveDTO);
+    Long userLogin(UserSaveDTO userSaveDTO);
 
     /**
      * 获取用户详情信息
-     * @param userName
+     * @param userId
      * @return
      */
-    UserInfo queryUserInfo(String userName);
+    UserInfo queryUserInfo(String userId);
 
     /**
      * 修改用户密码

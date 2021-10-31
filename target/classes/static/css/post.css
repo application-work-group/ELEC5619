@@ -207,3 +207,13 @@ a{
 .sub-post{
     padding:20px 69px 30px 20px;
 }
+
+a:link{
+    color: black;
+}
+a:visited{
+    color:black;
+}
+a:hover{
+    color: lightgoldenrodyellow;
+}

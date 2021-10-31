@@ -37,9 +37,9 @@ $(document).ready(function(){
             var GameId = parseInt(getGameId);
             var sendData = {
                 paidScore: 100,
-                userName: "qqq",
-                userId: 1020094254486841,
-                gameId: 1018080618093594,
+                userName: sessionStorage.getItem("userName"),
+                userId: sessionStorage.getItem("userId"),
+                gameId: GameId,
                 comment: "200",
                 victoryOrDefeat: "VICTORY",
             }

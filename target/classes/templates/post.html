@@ -13,11 +13,11 @@
             <div class="topbarNav-left">
                 <ul class="quickNav">
                     <li class="homepage">
-                        <a href="http://localhost:8080/user/user#/home">homepage</a>
+                        <a href="http://localhost:8080/#/home">homepage</a>
                     </li>
                     <li class="line">|</li>
                     <li>
-                        <a href="http://localhost:8080/user/user#/profile">personal center</a>
+                        <a href="http://localhost:8080/#/profile">personal center</a>
                     </li>
                 </ul>
             </div>
@@ -28,7 +28,7 @@
     </div>
     <div class="header">
         <div class="website-name">
-            <a href="../user/user#/home">
+            <a href="../#/home">
                 <img src="../static/images/sport.jpg" alt="Home" width="60px" height="50px">
             </a>
 
@@ -38,11 +38,11 @@
                 <div class="nav-ul">
                     <ul class="nav-item">
                         <li>
-                            <a href="http://localhost:8080/user/user#/home">Homepage</a>
+                            <a href="http://localhost:8080/#/home">Homepage</a>
                         </li>
                         <li>|</li>
                         <li>
-                            <a href="http://localhost:8080/user/user#/Posts">Community</a>
+                            <a href="http://localhost:8080/#/Posts">Community</a>
                         </li>
                     </ul>
                 </div>
@@ -51,27 +51,23 @@
                 <div class="subnav-ul">
                     <ul class="nav-item">
                         <li>
-                            <a href="http://localhost:8080/user/user#/League/EPL">EPL</a>
+                            <a href="http://localhost:8080/#/League/MLB">MLB</a>
                         </li>
                         <li>|</li>
                         <li>
-                            <a href="http://localhost:8080/user/user#/League/NLB">NLB</a>
+                            <a href="http://localhost:8080/#/League/NBA">NBA</a>
                         </li>
                         <li>|</li>
                         <li>
-                            <a href="http://localhost:8080/user/user#/League/NBA">NBA</a>
+                            <a href="http://localhost:8080/#/League/NFL">NFL</a>
                         </li>
                         <li>|</li>
                         <li>
-                            <a href="http://localhost:8080/user/user#/League/NFL">NFL</a>
+                            <a href="http://localhost:8080/#/League/NCAAF">NCAAF</a>
                         </li>
                         <li>|</li>
                         <li>
-                            <a href="http://localhost:8080/user/user#/League/NHL">NHL</a>
-                        </li>
-                        <li>|</li>
-                        <li>
-                            <a href="http://localhost:8080/user/user#/League/Primier League">Primier League</a>
+                            <a href="http://localhost:8080/#/League/NHL">NHL</a>
                         </li>
                     </ul>
                 </div>
@@ -83,7 +79,7 @@
             <div class="nav">
                 <section class="sec">
                     <span>
-                        <a href="../game-session/test1shuyuan">community</a>
+                        <a href="../#/Posts">community</a>
                         <i> > </i>
                         <a th:text="${post1234.gameType}"></a>
                     </span>
@@ -145,42 +141,42 @@
                 </div>
                 <ul>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist1.id})}" th:text="${postlist1.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist1.postId})}" th:text="${postlist1.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist2.id})}" th:text="${postlist2.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist2.postId})}" th:text="${postlist2.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist3.id})}" th:text="${postlist3.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist3.postId})}" th:text="${postlist3.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist4.id})}" th:text="${postlist4.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist4.postId})}" th:text="${postlist4.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist5.id})}" th:text="${postlist5.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist5.postId})}" th:text="${postlist5.title}">123</a>
                     </li>
                 </ul>
             </div>
             <div class="comment_box">
                 <div class="title">
                     <img src="../static/images/sport.jpg" alt="s" height="40" width="40">
-                    123
+                    community 2
                 </div>
                 <ul>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist1.id})}" th:text="${postlist1.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist1.postId})}" th:text="${postlist1.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist2.id})}" th:text="${postlist2.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist2.postId})}" th:text="${postlist2.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist3.id})}" th:text="${postlist3.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist3.postId})}" th:text="${postlist3.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist4.id})}" th:text="${postlist4.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist4.postId})}" th:text="${postlist4.title}">123</a>
                     </li>
                     <li>
-                        <a th:href="@{/post-info/post(postId=${postlist5.id})}" th:text="${postlist5.title}">123</a>
+                        <a th:href="@{/post-info/post(postId=${postlist5.postId})}" th:text="${postlist5.title}">123</a>
                     </li>
                 </ul>
             </div>

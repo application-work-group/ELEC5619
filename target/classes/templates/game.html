@@ -15,11 +15,11 @@
             <div class="topbarNav-left">
                 <ul class="quickNav">
                     <li class="homepage">
-                        <a href="http://localhost:8080/user/user#/home">homepage</a>
+                        <a href="http://localhost:8080/#/home">homepage</a>
                     </li>
                     <li class="line">|</li>
                     <li>
-                        <a href="http://localhost:8080/user/user#/profile">personal center</a>
+                        <a href="http://localhost:8080/#/profile">personal center</a>
                     </li>
                 </ul>
             </div>
@@ -30,7 +30,7 @@
     </div>
     <div class="header">
         <div class="website-name">
-            <a href="../user/user#/home">
+            <a href="../#/home">
                 <img src="../static/images/sport.jpg" alt="Home" width="60px" height="50px">
             </a>
         </div>
@@ -39,11 +39,11 @@
                 <div class="nav-ul">
                     <ul class="nav-item">
                         <li>
-                            <a href="http://localhost:8080/user/user#/home">Homepage</a>
+                            <a href="http://localhost:8080/#/home">Homepage</a>
                         </li>
                         <li>|</li>
                         <li>
-                            <a href="http://localhost:8080/user/user#/Posts">Community</a>
+                            <a href="http://localhost:8080/#/Posts">Community</a>
                         </li>
                     </ul>
                 </div>
@@ -52,27 +52,23 @@
                 <div class="subnav-ul">
                     <ul class="nav-item">
                         <li>
-                            <a href="http://localhost:8080/user/user#/League/EPL">EPL</a>
+                            <a href="http://localhost:8080/#/League/MLB">MLB</a>
                         </li>
                         <li>|</li>
                         <li>
-                            <a href="http://localhost:8080/user/user#/League/NLB">NLB</a>
+                            <a href="http://localhost:8080/#/League/NBA">NBA</a>
                         </li>
                         <li>|</li>
                         <li>
-                            <a href="http://localhost:8080/user/user#/League/NBA">NBA</a>
+                            <a href="http://localhost:8080/#/League/NFL">NFL</a>
                         </li>
                         <li>|</li>
                         <li>
-                            <a href="http://localhost:8080/user/user#/League/NFL">NFL</a>
+                            <a href="http://localhost:8080/#/League/NCAAF">NCAAF</a>
                         </li>
                         <li>|</li>
                         <li>
-                            <a href="http://localhost:8080/user/user#/League/NHL">NHL</a>
-                        </li>
-                        <li>|</li>
-                        <li>
-                            <a href="http://localhost:8080/user/user#/League/Primier League">Primier League</a>
+                            <a href="http://localhost:8080/#/League/NHL">NHL</a>
                         </li>
                     </ul>
                 </div>
@@ -125,6 +121,7 @@
                     </div>
                     <div class="info">
                         <p style="display:none" class="none_gameid" th:text="${gameSession.gameId}"></p>
+                        <p style="display:none" class="none_gameResult" th:text="${gameSession.gameResult}">vs</p>
                     </div>
                 </div>
             </div>
@@ -186,7 +183,7 @@
             <div class="comment_box">
                 <div class="title">
                     <img src="../static/images/sport.jpg" alt="s" height="40" width="40">
-                    123
+                    Community
                 </div>
                 <ul>
                     <li>
@@ -209,7 +206,7 @@
             <div class="comment_box">
                 <div class="title">
                     <img src="../static/images/sport.jpg" alt="s" height="40" width="40">
-                    123
+                    Community 2
                 </div>
                 <ul>
                     <li>
@@ -257,25 +254,5 @@
     </div>
     <div id="footer"></div>
 </div>
-
-<div id="app">
-    <p> {</p>
-</div>
-</div>
-<div></div>
-
-<script>
-    var vm = new Vue({
-        el:'#app',
-        data:{
-            prize:0,
-
-        },
-        watch:{
-        }
-
-    })
-</script>
-
 </body>
 </html>

@@ -29,7 +29,7 @@ $(document).ready(function(){
                     alert("fail");
                 },
                 error : function(){
-                    alert("error");
+                    alert("error"+getType+getTitle+getContent);
                 }
             });
         }else{

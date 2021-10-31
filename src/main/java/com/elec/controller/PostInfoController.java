@@ -54,7 +54,7 @@ public class PostInfoController {
     }
     @RequestMapping("/publish")
     public String test3shuyuan( Model model)
-    {   Long score = Result.succeed(this.userSaveService.queryUserInfo("usernamelululu1wo")).getData().getCurrScores();
+    {
         GameSession gs = Result.succeed(this.gameSessionHandleService.getGameList()).getData().get(0);
         Long gameId = gs.getGameId();
         List<GameSession> listgs = Result.succeed(this.gameSessionHandleService.getGameList()).getData().subList(0,5);

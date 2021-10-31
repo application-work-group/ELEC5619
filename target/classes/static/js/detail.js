@@ -8,7 +8,7 @@ $(document).ready(function(){
         $(".item1").text($(this).find("i").text());
         $(".item2").text($(this).find("b").text());
         $(".window_head span").text($(this).parent().prev().find(".title_name").text());
-        if($(".vs").text()==""){
+        if($(".none_gameResult").text()=="away:home"){
             $(".predict_window").show();
         }else {
             alert("the prediction is over");
@@ -18,7 +18,7 @@ $(document).ready(function(){
         $(".item1").text($(this).find("i").text());
         $(".item2").text($(this).find("b").text());
         $(".window_head span").text($(this).parent().prev().find(".title_name").text());
-        if($(".vs").text()==""){
+        if($(".none_gameResult").text()=="away:home"){
             $(".predict_window").show();
         }else {
             alert("the prediction is over");

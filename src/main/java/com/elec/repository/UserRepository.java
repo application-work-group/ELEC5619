@@ -41,6 +41,7 @@ public interface UserRepository {
      */
     UserInfo queryUserInfo(String userId);
 
+    UserInfo queryUserInfoByName(String userName);
     /**
      * 获取所有用户积分信息
      * @return

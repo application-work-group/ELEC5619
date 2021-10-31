@@ -57,6 +57,12 @@ public class UserRepositoryImpl implements UserRepository {
                 .eq(UserInfo::getUserId,userId));
         return userInfo;
     }
+    @Override
+    public UserInfo queryUserInfoByName(String userName) {
+        UserInfo userInfo = userInfoService.getOne(new LambdaQueryWrapper<UserInfo>()
+                .eq(UserInfo::getUserName,userName));
+        return userInfo;
+    }
 
     @Override
     public List<UserInfo> getUserInfos() {

@@ -1,19 +1,24 @@
 
 $(document).ready(function(){
-    sessionStorage.setItem("isLogIn","true");
-    sessionStorage.setItem("userName",1020094254486841);
-    $(".empty").text(sessionStorage.getItem("isLogIn"));
+    if(sessionStorage.getItem("isLogin")!="true"){
+        sessionStorage.setItem("isLogin","false");
+    }
+    $(".empty").text(sessionStorage.getItem("isLogin"));
     $(".team_a_button").click(function(){
         $(".item1").text($(this).find("i").text());
         $(".item2").text($(this).find("b").text());
         $(".window_head span").text($(this).parent().prev().find(".title_name").text());
-        $(".predict_window").show();
+        if($(".vs").text()==""){
+            $(".predict_window").show();
+        }else {
+            alert("the prediction is over");
+        }
     });
     $(".team_b_button").click(function(){
         $(".item1").text($(this).find("i").text());
         $(".item2").text($(this).find("b").text());
         $(".window_head span").text($(this).parent().prev().find(".title_name").text());
-        if($(".vs").text()=="vs"){
+        if($(".vs").text()==""){
             $(".predict_window").show();
         }else {
             alert("the prediction is over");
@@ -27,14 +32,14 @@ $(document).ready(function(){
         $(".item3_win").text("you can win : "+prize);
     });
     $(".window_button_2").click(function(){
-        if(sessionStorage.getItem("isLogIn")=="true"){
+        if(sessionStorage.getItem("isLogin")=="true"){
             var getGameId = $('.none_gameid').text();
             var GameId = parseInt(getGameId);
             var sendData = {
                 paidScore: 100,
-                userName: "qqq",
-                userId: 1020094254486841,
-                gameId: 1018080618093594,
+                userName: sessionStorage.getItem("userName"),
+                userId: sessionStorage.getItem("userId"),
+                gameId: GameId,
                 comment: "200",
                 victoryOrDefeat: "VICTORY",
             }

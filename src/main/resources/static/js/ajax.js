@@ -1,7 +1,10 @@
 
 $(document).ready(function(){
+    if(sessionStorage.getItem("isLogin")!="true"){
+        sessionStorage.setItem("isLogin","false")
+    }
     $(".release_button").click(function(){
-        if(sessionStorage.getItem("isLogIn")=="true"){
+        if(sessionStorage.getItem("isLogin")=="true"){
             var getTitle = $("#title_area").val();
             var getContent = $("#reply_textarea").val();
             var getType = $("#gameType").val();

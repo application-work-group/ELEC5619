@@ -60,7 +60,6 @@
     </div>
     <div class="game_live">
         <div class="table_list">
-            <div class="table_list_left"></div>
             <div class="table_list_c">
                 <div class="table">
                     <ul>
@@ -70,7 +69,7 @@
                                 <div class="team">
                                     <span class="name" th:text="${gamelist.away}">10-04</span>
                                 </div>
-                                <div class="vs"  th:if="${gameSession.gameResult} ne 'away:home'" th:text="${gameSession.gameResult}">vs</div>
+                                <div class="vs"  th:if="${gamelist.gameResult} ne 'away:home'" th:text="${gamelist.gameResult}">vs</div>
                                 <div class="team2">
                                     <span class="name" th:text="${gamelist.home}">1 game</span>
                                 </div>
@@ -79,16 +78,15 @@
                     </ul>
                 </div>
             </div>
-            <div class="table_list_right"></div>
         </div>
         <div class="game_live_content">
             <div class="game_box">
                 <div class="team_vs">
                     <div class="team_vs_box">
-                        <div class="game_information" th:text="'game time: '+${gameSession.gameTime}+'     League :'+${gameSession.league}"></div>
+                        <div class="game_information" th:text="'Game time: '+${gameSession.gameTime}+'     League :'+${gameSession.league}"></div>
                         <div class="team_a">
                             <div class="message">
-                                <h2>&nbsp;</h2>
+                                <div>Guest Team</div>
                                 <p th:text="${gameSession.away}">team_a name</p>
                                 <div></div>
                             </div>
@@ -96,7 +94,7 @@
                         <div class="vs"  th:if="${gameSession.gameResult} ne 'away:home'" th:text="${gameSession.gameResult}">vs</div>
                         <div class="team_b">
                             <div class="message">
-                                <h2>&nbsp;</h2>
+                                <div> Home team</div>
                                 <p th:text="${gameSession.home}">team_b name</p>
                                 <div></div>
                             </div>
@@ -133,12 +131,12 @@
                 <div class="predict_list">
                     <span class="team_a_button">
                         <i th:text="${gameSession.home}">team1</i>
-                        <b>1.00</b>
+                        <b>2.00</b>
                     </span>
 
                     <span class="team_b_button">
                         <i th:text="${gameSession.away}">team2</i>
-                        <b>1.00</b>
+                        <b>2.00</b>
                     </span>
                 </div>
             </div>
@@ -150,7 +148,7 @@
                 <div class="predict_list">
                     <span class="team_a_button">
                         <i th:text="${gameSession.home}">team1</i>
-                        <b>1.00</b>
+                        <b>2.00</b>
                     </span>
 
                     <span class="team_b_button">
@@ -228,7 +226,7 @@
                     1.0
                 </div>
                 <div class="item3">
-                    <input type="number"  oninput="this.value = this.value.replace(/[^0-9]/g, '');" value="5000" id="predict_number">
+                    <input type="number"  oninput="this.value = this.value.replace(/[^0-9]/g, '');" value="50" id="predict_number">
                     <i class="window_button_2">predict</i>
                     <p class="item3_win">you can win :</p>
                 </div>

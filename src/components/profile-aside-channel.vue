@@ -15,7 +15,7 @@
             <img :src="channel"
                  class="image">
             <div style="padding: 14px;text-align: center">
-              <span @click = "channelsJump(index)">{{ channels[index]}}</span>
+              <span @click = "channelsJump(channels[index])">{{ channels[index]}}</span>
               <div class="bottom clearfix">
 <!--                <el-button type="text" class="button">取消关注</el-button>-->
               </div>
@@ -35,7 +35,7 @@ export default {
   name: "profile-aside-channel",
   data(){
     return{
-      channels: ['football', 'basketball'],
+      channels: ['MLB', 'NBA','NHL','NCAAF'],
       index:1
     }
   },
@@ -48,9 +48,9 @@ export default {
   },
   methods:{
     channelsJump(index){
-      console.log('index = ',index)
       this.$router.push({
-            name:this.channels[index]
+            name:'league',
+            params:{leagueName: index},
       }
       )
     }

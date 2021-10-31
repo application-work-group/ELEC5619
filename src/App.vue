@@ -15,12 +15,12 @@
         <el-menu-item index="/home">Home</el-menu-item>
         <el-submenu index="/League">
           <template slot="title">League</template>
-          <el-menu-item index="/league/EPL">EPL</el-menu-item>
+          <!-- <el-menu-item index="/league/EPL">EPL</el-menu-item> -->
           <el-menu-item index="/league/MLB">MLB</el-menu-item>
           <el-menu-item index="/league/NBA">NBA</el-menu-item>
           <el-menu-item index="/league/NFL">NFL</el-menu-item>
+          <el-menu-item index="/league/NCAAF">NCAAF</el-menu-item>
           <el-menu-item index="/league/NHL">NHL</el-menu-item>
-          <el-menu-item index="/league/PrimierLeague">Primier League</el-menu-item>
         </el-submenu>
         <el-menu-item index="/posts">Posts</el-menu-item>
         <el-menu-item index="/profile" style="position:absolute;right:0">Personal Center</el-menu-item>

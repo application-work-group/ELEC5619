@@ -56,7 +56,7 @@ public class GameSessionController {
     }
     @RequestMapping("/gameDetail")
     public String test1shuyuan(@RequestParam Long gameId, Model model)
-    {   Long score = Result.succeed(this.userSaveService.queryUserInfo("usernamelululu1wo")).getData().getCurrScores();
+    {   //Long score = Result.succeed(this.userSaveService.queryUserInfo("usernamelululu1wo")).getData().getCurrScores();
         List<GameSession> listgs = Result.succeed(this.gameSessionHandleService.getGameList()).getData().subList(0,5);
         model.addAttribute("gslist",listgs);
         GameSession gs1 = Result.succeed(this.gameSessionHandleService.getDetail(gameId)).getData();

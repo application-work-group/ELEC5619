@@ -33,9 +33,8 @@ public class PostsController {
     }
     //获取帖子列表
     @PostMapping("/getPostList")
-    public JSONObject getPostList(){
-        JSONObject object = new JSONObject();
-        object.fluentPut("postInfos",this.postsSaveService.getPostList());
-        return object;
+    public Result<?> getPostList(){
+        return Result.succeed(this.postsSaveService.getPostList());
     }
 }
+

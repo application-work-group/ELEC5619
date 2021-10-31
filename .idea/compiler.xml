@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ELEC5619" />
         <module name="Elec5619" />
+        <module name="最终后端" />
       </profile>
     </annotationProcessing>
   </component>
@@ -16,6 +17,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ELEC5619" options="-parameters" />
       <module name="Elec5619" options="-parameters" />
+      <module name="最终后端" options="-parameters" />
     </option>
   </component>
 </project>

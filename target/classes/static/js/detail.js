@@ -55,6 +55,7 @@ $(document).ready(function(){
                     crossDomain: true,
                     success : function(data){
                         alert("success");
+                        console.log('success info =>',data)
                     },
                     fail : function(){
                         alert("fail");

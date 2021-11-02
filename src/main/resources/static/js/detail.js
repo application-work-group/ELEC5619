@@ -3,7 +3,6 @@ $(document).ready(function(){
     if(sessionStorage.getItem("isLogin")!="true"){
         sessionStorage.setItem("isLogin","false");
     }
-    sessionStorage.setItem("score","1000");
     $(".empty").text(sessionStorage.getItem("isLogin"));
     $(".team_a_button").click(function(){
         $(".item1").text($(this).find("i").text());

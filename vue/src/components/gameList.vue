@@ -42,18 +42,18 @@
                         >
                             <v-row>
                                 <v-col>
-                                <span class="text-h5 text--primary font-weight-black">Home</span>
+                                <span class="text-h5 text--primary font-weight-black">Away</span>
                                 </v-col>
                                 <v-col>
-                                <span class="text-h5 text--primary font-weight-black">Away</span>
+                                <span class="text-h5 text--primary font-weight-black">Home</span>
                                 </v-col>
                             </v-row>
                             <v-row>
                                 <v-col>
-                                <span class="text-h6 text--primary" style="font-style: italic">{{item.home}}</span>
+                                <span class="text-h6 text--primary" style="font-style: italic">{{item.away}}</span>
                                 </v-col>
                                 <v-col>
-                                <span class="text-h6 text--primary" style="font-style: italic">{{item.away}}</span>
+                                <span class="text-h6 text--primary" style="font-style: italic">{{item.home}}</span>
                                 </v-col>
                             </v-row>
                             <v-row>
@@ -82,18 +82,18 @@
                         >
                             <v-row>
                                 <v-col>
-                                <span class="text-h5 text--primary font-weight-black">Home</span>
+                                <span class="text-h5 text--primary font-weight-black">Away</span>
                                 </v-col>
                                 <v-col>
-                                <span class="text-h5 text--primary font-weight-black">Away</span>
+                                <span class="text-h5 text--primary font-weight-black">Home</span>
                                 </v-col>
                             </v-row>
                             <v-row>
                                 <v-col>
-                                <span class="text-h6 text--primary" style="font-style: italic">{{item.home}}</span>
+                                <span class="text-h6 text--primary" style="font-style: italic">{{item.away}}</span>
                                 </v-col>
                                 <v-col>
-                                <span class="text-h6 text--primary" style="font-style: italic">{{item.away}}</span>
+                                <span class="text-h6 text--primary" style="font-style: italic">{{item.home}}</span>
                                 </v-col>
                             </v-row>
                             <v-row>

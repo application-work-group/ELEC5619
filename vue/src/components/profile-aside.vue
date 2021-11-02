@@ -45,12 +45,17 @@ export default {
       postNumber:0,
       following:0,
       ranking:0,
-      scoreNext:0
+      scoreNext:0,
+      i:0
     }
   },
   computed:{
     popoverText(){
-      return "If you get "+ (this.scoreNext-this.score) + " more points, you can surpass the previous one";
+      if(this.i !== 20){
+        return "If you get "+ (this.scoreNext-this.score) + " more points, you can surpass the previous one";
+      }else{
+        return "Please try to improve your ranking"
+      }
     }
   },
   components: {
@@ -63,14 +68,18 @@ export default {
     this.axios.post('http://localhost:8080/rank/list/getRankList'
     ).then(res => {
       console.log('ranklist=>', res.data);
-      for (let i = 0; i < res.data.length;i++){
+      this.i = 0;
+      for (this.i = 0; this.i < res.data.length;this.i++){
         //console.log('this is=>', res.data[i].userName)
-        if(sessionStorage.getItem('userName') === res.data[i].userName){
-          this.scoreNext = res.data[i-1].currScores
+        if(sessionStorage.getItem('userName') === res.data[this.i].userName){
+          this.scoreNext = res.data[this.i-1].currScores
          // this.score = res.data[i].currScores
-          this.ranking = i+1
+          this.ranking = this.i+1
           break;
         }
+      }
+      if(this.i === 20){
+        this.ranking = ">20"
       }
     }).catch(res =>{
       console.log('error =>',res)

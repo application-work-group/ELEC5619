@@ -161,7 +161,7 @@ public class GameSessionHandleServiceImpl implements GameSessionHandleService {
         operationRecord.setOperationStatus(UserOperationEnums.QUIZ.name());
         operationRecord.setGameSession(gameInfo);
         try {
-            final UserInfo userInfo = this.userRepository.queryUserInfo(gameBetDTO.getUserName());
+            final UserInfo userInfo = this.userRepository.queryUserInfo(gameBetDTO.getUserId().toString());
             final long l = userInfo.getCurrScores() - gameBetDTO.getPaidScore();
             if (l<0){
                 throw new Exception("积分不足");

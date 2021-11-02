@@ -35,12 +35,13 @@ $(document).ready(function(){
     $(".window_button_2").click(function(){
         if(sessionStorage.getItem("isLogin")=="true"){
             var getGameId = $('.none_gameid').text();
-            var GameId = parseInt(getGameId);
+            var GameId = parseFloat(getGameId);
             var paidScore = $('#predict_number').val();
+            paidScore = parseFloat(paidScore);
             var sendData = {
                 paidScore: paidScore,
                 userName: sessionStorage.getItem("userName"),
-                userId: sessionStorage.getItem("userId"),
+                userId: parseFloat(sessionStorage.getItem("userId")),
                 gameId: GameId,
                 comment: "200",
                 victoryOrDefeat: "VICTORY",

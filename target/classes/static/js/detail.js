@@ -3,6 +3,7 @@ $(document).ready(function(){
     if(sessionStorage.getItem("isLogin")!="true"){
         sessionStorage.setItem("isLogin","false");
     }
+    sessionStorage.setItem("score","1000");
     $(".empty").text(sessionStorage.getItem("isLogin"));
     $(".team_a_button").click(function(){
         $(".item1").text($(this).find("i").text());
@@ -35,31 +36,36 @@ $(document).ready(function(){
         if(sessionStorage.getItem("isLogin")=="true"){
             var getGameId = $('.none_gameid').text();
             var GameId = parseInt(getGameId);
+            var paidScore = $('#predict_number').val();
             var sendData = {
-                paidScore: 100,
+                paidScore: paidScore,
                 userName: sessionStorage.getItem("userName"),
                 userId: sessionStorage.getItem("userId"),
                 gameId: GameId,
                 comment: "200",
                 victoryOrDefeat: "VICTORY",
             }
-            $.ajax({
-                url:'http://localhost:8080/game/gameSession/saveUserOperation',
-                data: JSON.stringify(sendData),
-                type: 'POST',
-                dataType: "json",
-                contentType: 'application/json;charset=UTF-8',
-                crossDomain: true,
-                success : function(data){
-                    alert("success");
-                },
-                fail : function(){
-                    alert("fail");
-                },
-                error : function(){
-                    alert("error");
-                }
-            });
+            if(parseInt(sessionStorage.getItem("score"))>=paidScore){
+                $.ajax({
+                    url:'http://localhost:8080/game/gameSession/saveUserOperation',
+                    data: JSON.stringify(sendData),
+                    type: 'POST',
+                    dataType: "json",
+                    contentType: 'application/json;charset=UTF-8',
+                    crossDomain: true,
+                    success : function(data){
+                        alert("success");
+                    },
+                    fail : function(){
+                        alert("fail");
+                    },
+                    error : function(){
+                        alert("error");
+                    }
+                });
+            }else{
+                alert("Your score are not enough");
+            }
         }else{
             alert("please login first");
         }

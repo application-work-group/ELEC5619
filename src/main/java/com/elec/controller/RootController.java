@@ -1,8 +1,11 @@
 package com.elec.controller;
 
+import com.elec.service.GameSessionHandleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * ok接口
@@ -12,9 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Controller
 public class RootController {
+    @Resource
+    private GameSessionHandleService gameSessionHandleService;
 
     @GetMapping("/")
     public String root() {
+//        this.gameSessionHandleService.saveBasketballDetail();
+//        this.gameSessionHandleService.saveUSGameDetail();
         return "index";
     }
 

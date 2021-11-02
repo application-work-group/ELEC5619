@@ -28,7 +28,7 @@ public class PostsSaveServiceImpl implements PostsSaveService {
         postSaveDTO.setPostId(postId);
         final Boolean save = this.postRepository.save(postSaveDTO);
         if (save){
-            final UserInfo userInfo = this.userRepository.queryUserInfoByName(postSaveDTO.getUserName());
+            final UserInfo userInfo = this.userRepository.queryUserInfo(postSaveDTO.getUserName());
             if (StringUtils.isNotBlank(userInfo.getPostList())){
                 JSONArray array = JSONArray.parseArray(userInfo.getPostList());
                 List<String> list = array.toJavaList(String.class);

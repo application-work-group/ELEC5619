@@ -9,7 +9,7 @@ $(document).ready(function(){
             var getContent = $("#reply_textarea").val();
             var getType = $("#gameType").val();
             var sendData = {
-                userName: sessionStorage.getItem("userName"),
+                userName: sessionStorage.getItem("userId"),
                 gameType: getType,
                 title: getTitle,
                 content: getContent,
@@ -29,7 +29,7 @@ $(document).ready(function(){
                     alert("fail");
                 },
                 error : function(){
-                    alert("error"+getType+getTitle+getContent);
+                    alert("error"+getType+getTitle+getContent+sessionStorage.getItem("userName"));
                 }
             });
         }else{
